@@ -1,0 +1,130 @@
+/* Self-hosted fonts — latin subset, woff2 only, swap to avoid render-blocking */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/montserrat-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/montserrat-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/montserrat-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/montserrat-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-500.woff2') format('woff2');
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--cloud);
+  font-family: var(--font-sans);
+  color: var(--graphite);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: var(--kestrel-blue); text-decoration: none; }
+a:hover { color: var(--deep-blue); text-decoration: underline; }
+
+h1, h2, h3, h4, p { margin: 0; text-wrap: pretty; }
+
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+img, svg { display: block; max-width: 100%; }
+
+button { font-family: inherit; }
+
+input, textarea, select, button { font-family: inherit; font-size: 14.5px; }
+
+input::placeholder, textarea::placeholder { color: var(--slate-400); }
+
+:focus-visible {
+  outline: 2px solid var(--kestrel-blue);
+  outline-offset: 2px;
+}
+
+[hidden] { display: none !important; }
+
+/* Attribute-driven responsive grids used throughout the site */
+[data-grid] { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+[data-grid="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+[data-grid="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 1000px) {
+  [data-grid] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  [data-grid] { grid-template-columns: minmax(0, 1fr); }
+}
+
+[data-cols="4"] { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+[data-cols="3"] { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+[data-cols="2"] { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 1000px) { [data-cols] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 580px) { [data-cols] { grid-template-columns: minmax(0, 1fr); } }
+
+[data-form-row] { display: grid; gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 640px) { [data-form-row] { grid-template-columns: minmax(0, 1fr); } }
+
+.container-kestara {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-h);
+}
+
+.bg-white { background: var(--white); }
+.bg-cloud { background: var(--cloud); }
+.bg-graphite { background: var(--graphite); }
+.border-b { border-bottom: 1px solid var(--slate-200); }
+.border-t { border-top: 1px solid var(--slate-200); }
+.border-tb { border-top: 1px solid var(--slate-200); border-bottom: 1px solid var(--slate-200); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

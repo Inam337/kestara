@@ -1,0 +1,87 @@
+.k-footer {
+  background: var(--midnight);
+  border-top: 1px solid rgba(248, 250, 252, .08);
+}
+
+/* Multi-column variant (Home) */
+.k-footer__grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 56px 24px 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 36px;
+}
+.k-footer__brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.k-footer__brand-name {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .24em;
+  color: var(--cloud);
+}
+.k-footer__brand-blurb {
+  margin-top: 14px;
+  max-width: 260px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--slate);
+}
+.k-footer__col-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--slate-600);
+}
+.k-footer__col-links {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.k-footer__col-links a {
+  font-size: 13.5px;
+  color: var(--slate-400);
+  transition: color var(--ease-hover);
+}
+.k-footer__col-links a:hover { color: var(--cloud); text-decoration: none; }
+
+.k-footer__bottom {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  border-top: 1px solid rgba(248, 250, 252, .06);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+.k-footer__copy { font-size: 12px; color: var(--slate-600); }
+.k-footer__version { font-size: 12px; color: var(--slate-600); font-family: var(--font-mono); }
+
+/* Single-row variant (About / Contact / Design System) */
+.k-footer__row {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 48px 24px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+.k-footer__row-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.k-footer__row-nav a {
+  font-size: 13.5px;
+  color: var(--slate-400);
+  transition: color var(--ease-hover);
+}
+.k-footer__row-nav a:hover { color: var(--cloud); text-decoration: none; }

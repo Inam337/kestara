@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/smeda-eap-mis-design-system-0817d3f2-adb2-4cb0-a832-b709b2e47311/colors_and_type.css">
+<script src="_ds/smeda-eap-mis-design-system-0817d3f2-adb2-4cb0-a832-b709b2e47311/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  body { margin:0; background:#F8FAFC; font-family:'Montserrat',system-ui,sans-serif; color:#111827; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#2563EB; text-decoration:none; }
+  a:hover { color:#1E3A8A; text-decoration:underline; }
+  h1,h2,h3,h4,p { margin:0; text-wrap:pretty; }
+  @keyframes kRise { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+  @keyframes kFade { from { opacity:0; } to { opacity:1; } }
+  @keyframes kSpin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+  @keyframes kPulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.35; transform:scale(.7); } }
+  @keyframes kDraw { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+  @keyframes kBlink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
+  @keyframes kLoad { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+  @keyframes kLift { from { opacity:0; transform:translateY(10px) scale(.94); } to { opacity:1; transform:none; } }
+  @keyframes kFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-7px); } }
+  @keyframes kWingA { 0%,100% { transform:rotate(0deg); } 50% { transform:rotate(-8deg) translateX(-2px); } }
+  @keyframes kWingB { 0%,100% { transform:rotate(0deg); } 50% { transform:rotate(-5deg) translateX(-1px); } }
+  @keyframes kSlip { 0%,100% { opacity:1; transform:translateX(0); } 50% { opacity:.4; transform:translateX(-3px); } }
+  @media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
+  [data-grid] { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); }
+  @media (max-width:1000px) { [data-grid] { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (max-width:560px) { [data-grid] { grid-template-columns:minmax(0,1fr); } }
+</style>
+</helmet>
+
+<div style="display:block">
+
+<sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+  <div role="status" aria-label="Loading Kestara" style="position:fixed;inset:0;z-index:200;background:radial-gradient(ellipse 70% 60% at 50% 40%,#111827,#080D16 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:{{ loaderOpacity }};transition:opacity .6s ease">
+    <div style="position:relative;width:min(56vw,220px);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
+      <svg viewBox="0 0 400 400" style="position:absolute;inset:0;width:100%;height:100%;animation:kSpin 6s linear infinite" aria-hidden="true">
+        <circle cx="200" cy="200" r="188" fill="none" stroke="rgba(148,163,184,.14)" stroke-width="2"></circle>
+        <circle cx="200" cy="200" r="188" fill="none" stroke="#3B82F6" stroke-width="3" stroke-dasharray="210 971" stroke-linecap="round"></circle>
+        <circle cx="200" cy="200" r="188" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="64 1117" stroke-dashoffset="-640" stroke-linecap="round"></circle>
+      </svg>
+      <svg viewBox="0 0 400 400" style="position:absolute;inset:0;width:100%;height:100%;animation:kSpin 9s linear infinite reverse" aria-hidden="true">
+        <circle cx="200" cy="200" r="152" fill="none" stroke="rgba(59,130,246,.2)" stroke-width="1" stroke-dasharray="4 10"></circle>
+        <circle cx="200" cy="200" r="152" fill="none" stroke="rgba(245,158,11,.75)" stroke-width="2" stroke-dasharray="40 915" stroke-linecap="round"></circle>
+      </svg>
+      <svg viewBox="0 0 128 104" width="46%" style="position:relative;filter:drop-shadow(0 10px 30px rgba(37,99,235,.5));animation:kFloat 3s ease-in-out infinite" role="img" aria-label="Kestara">
+        <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A" style="transform-box:fill-box;transform-origin:90% 80%;animation:kWingA 1.7s ease-in-out infinite"></path>
+        <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6" style="transform-box:fill-box;transform-origin:90% 70%;animation:kWingB 1.7s ease-in-out .12s infinite"></path>
+        <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B" style="transform-box:fill-box;animation:kSlip 1.7s ease-in-out .2s infinite"></path>
+        <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"></path>
+        <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB" style="transform-box:fill-box;transform-origin:80% 10%;animation:kWingB 1.7s ease-in-out .06s infinite"></path>
+      </svg>
+    </div>
+    <div style="margin-top:14px;font-size:clamp(18px,3vw,24px);font-weight:600;letter-spacing:.42em;text-indent:.42em;color:#F8FAFC;animation:kRise .7s ease .15s both">KESTARA</div>
+    <div style="margin-top:12px;font-size:13.5px;color:#94A3B8;animation:kRise .7s ease .25s both">Build with Precision. Move with Speed.</div>
+    <div style="margin-top:30px;width:min(78vw,300px);height:3px;border-radius:2px;background:rgba(148,163,184,.16);overflow:hidden">
+      <div style="height:100%;background:linear-gradient(90deg,#1E3A8A,#3B82F6 60%,#F59E0B);transform-origin:left;animation:kLoad 2s cubic-bezier(.4,0,.2,1) both"></div>
+    </div>
+    <div style="margin-top:16px;font-size:11.5px;letter-spacing:.2em;color:#475569;font-family:'JetBrains Mono',monospace">INITIALIZING KESTARA</div>
+  </div>
+</sc-if>
+
+<header style="position:sticky;top:0;z-index:20;background:rgba(11,18,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(248,250,252,.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+      <svg viewBox="0 0 128 104" width="34" height="28" aria-hidden="true" style="display:block;overflow:visible">
+        <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"></path>
+        <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"></path>
+        <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"></path>
+        <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"></path>
+        <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"></path>
+      </svg>
+      <span style="font-size:17px;font-weight:600;letter-spacing:.24em;color:#F8FAFC">KESTARA</span>
+    </a>
+    <nav style="display:flex;gap:28px;margin-left:auto;align-items:center">
+      <a href="#platform" style="font-size:13.5px;font-weight:500;color:#CBD5E1;letter-spacing:.02em" style-hover="color:#F8FAFC;text-decoration:none">Platform</a>
+      <a href="#aidlc" style="font-size:13.5px;font-weight:500;color:#CBD5E1;letter-spacing:.02em" style-hover="color:#F8FAFC;text-decoration:none">AI-DLC</a>
+      <a href="#why" style="font-size:13.5px;font-weight:500;color:#CBD5E1;letter-spacing:.02em" style-hover="color:#F8FAFC;text-decoration:none">Why Kestara</a>
+      <a href="#agents" style="font-size:13.5px;font-weight:500;color:#CBD5E1;letter-spacing:.02em" style-hover="color:#F8FAFC;text-decoration:none">Agents</a>
+      <a href="Kestara%20About.dc.html" style="font-size:13.5px;font-weight:500;color:#CBD5E1;letter-spacing:.02em" style-hover="color:#F8FAFC;text-decoration:none">About</a>
+      <a href="Kestara%20Contact.dc.html" style="font-size:13.5px;font-weight:500;color:#CBD5E1;letter-spacing:.02em" style-hover="color:#F8FAFC;text-decoration:none">Contact</a>
+      <a href="{{ githubUrl }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:8px;background:linear-gradient(135deg,#60A5FA 0%,#2563EB 45%,#1E3A8A 100%);color:#fff;font-size:13.5px;font-weight:600;border:1px solid #3B82F6" style-hover="background:#1E3A8A;text-decoration:none;color:#fff">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" style="display:block">
+
+  <section style="position:relative;overflow:hidden;background:linear-gradient(180deg,#080D16 0%,#111827 52%,#172554 100%)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(248,250,252,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 100%)"></div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,116px) 24px clamp(72px,8vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,5vw,72px);align-items:center">
+      <div style="min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1px solid rgba(245,158,11,.4);border-radius:999px;background:rgba(245,158,11,.08);margin-bottom:28px;animation:kRise .6s ease both">
+          <span style="width:6px;height:6px;border-radius:50%;background:#F59E0B;display:block;animation:kPulse 2.4s ease-in-out infinite"></span>
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:.18em;color:#FBBF24;font-family:'JetBrains Mono',monospace">AI-DLC · DEVELOPMENT LIFECYCLE</span>
+        </div>
+        <h1 style="font-size:clamp(38px,5.2vw,62px);line-height:1.06;font-weight:700;letter-spacing:-.025em;color:#F8FAFC;animation:kRise .7s ease .08s both">Build with <span style="position:relative;display:inline-block">Precision.<span style="position:absolute;left:2px;right:6px;bottom:2px;height:4px;border-radius:2px;background:linear-gradient(90deg,#F59E0B,rgba(245,158,11,0));transform-origin:left;animation:kDraw .8s cubic-bezier(.4,0,.2,1) .7s both"></span></span><br><span style="background:linear-gradient(92deg,#DBEAFE 0%,#60A5FA 45%,#F59E0B 105%);-webkit-background-clip:text;background-clip:text;color:transparent">Move with Speed.</span></h1>
+        <p style="margin-top:24px;max-width:620px;font-size:clamp(16px,1.35vw,18.5px);line-height:1.65;color:#94A3B8;animation:kRise .7s ease .16s both">Kestara orchestrates the software development lifecycle with AI — helping teams move from requirements and design to development, testing, deployment and production with a structured engineering workflow.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:38px;animation:kRise .7s ease .24s both">
+          <a href="#platform" style="display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 20px;border-radius:10px;background:linear-gradient(135deg,#60A5FA 0%,#2563EB 45%,#1E3A8A 100%);color:#fff;font-size:14.5px;font-weight:600;white-space:nowrap;border:1px solid #3B82F6;box-shadow:0 8px 24px rgba(37,99,235,.28)" style-hover="background:linear-gradient(135deg,#3B82F6 0%,#1E3A8A 60%,#111827 100%);color:#fff;text-decoration:none">Explore Kestara
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"></path></svg>
+          </a>
+          <a href="#aidlc" style="display:inline-flex;align-items:center;height:50px;padding:0 18px;border-radius:10px;background:rgba(248,250,252,.05);color:#E2E8F0;font-size:14.5px;font-weight:600;white-space:nowrap;border:1px solid rgba(248,250,252,.18)" style-hover="background:rgba(248,250,252,.1);color:#fff;text-decoration:none">How AI-DLC Works</a>
+          <a href="{{ githubUrl }}" style="display:inline-flex;align-items:center;height:50px;padding:0 18px;border-radius:10px;color:#94A3B8;font-size:14.5px;font-weight:600;white-space:nowrap;border:1px dashed rgba(148,163,184,.4)" style-hover="color:#F8FAFC;border-color:#F59E0B;text-decoration:none">Clone on GitHub</a>
+        </div>
+        <div style="margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;padding-top:26px;border-top:1px solid rgba(248,250,252,.08);animation:kRise .7s ease .32s both">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#16A34A;display:block;animation:kPulse 2s ease-in-out infinite"></span>
+            <span style="font-size:11.5px;letter-spacing:.14em;color:#64748B;font-family:'JetBrains Mono',monospace">LIFECYCLE</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;min-width:0">
+            <span style="font-size:13px;font-weight:500;color:#F59E0B;font-family:'JetBrains Mono',monospace">{{ active.num }}</span>
+            <span style="font-size:14px;font-weight:600;color:#F8FAFC">{{ active.name }}</span>
+            <span style="width:8px;height:15px;background:#3B82F6;display:block;animation:kBlink 1.1s step-end infinite"></span>
+          </div>
+          <a href="#platform" style="margin-left:auto;font-size:12px;letter-spacing:.1em;color:#475569;font-family:'JetBrains Mono',monospace" style-hover="color:#93C5FD;text-decoration:none">12 PHASES →</a>
+        </div>
+      </div>
+
+      <div style="min-width:0;display:flex;justify-content:center;align-items:center;animation:kFade .9s ease both">
+        <div style="position:relative;width:min(100%,440px);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 400 400" style="position:absolute;inset:0;width:100%;height:100%;animation:kSpin 64s linear infinite" aria-hidden="true">
+            <circle cx="200" cy="200" r="186" fill="none" stroke="rgba(148,163,184,.16)" stroke-width="1"></circle>
+            <circle cx="200" cy="200" r="186" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="180 990" stroke-linecap="round"></circle>
+            <circle cx="200" cy="200" r="186" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="70 1100" stroke-dashoffset="-620" stroke-linecap="round"></circle>
+            <circle cx="200" cy="200" r="158" fill="none" stroke="rgba(148,163,184,.1)" stroke-width="1" stroke-dasharray="3 9"></circle>
+          </svg>
+          <svg viewBox="0 0 400 400" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
+            <circle cx="200" cy="200" r="132" fill="none" stroke="rgba(59,130,246,.22)" stroke-width="1"></circle>
+            <circle cx="200" cy="200" r="132" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="46 783" stroke-dashoffset="-120" stroke-linecap="round"></circle>
+          </svg>
+          <svg viewBox="0 0 128 104" width="58%" style="position:relative;filter:drop-shadow(0 14px 40px rgba(37,99,235,.45))" role="img" aria-label="Kestara geometric kestrel mark">
+            <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"></path>
+            <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"></path>
+            <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"></path>
+            <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"></path>
+            <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;border-top:1px solid rgba(248,250,252,.08)">
+      <div style="max-width:1280px;margin:0 auto;padding:22px 24px;display:flex;flex-wrap:wrap;gap:12px 36px;align-items:center;justify-content:center">
+        <sc-for list="{{ heroRail }}" as="stage" hint-placeholder-count="7">
+          <span style="font-size:11.5px;font-weight:500;letter-spacing:.2em;color:#64748B;font-family:'JetBrains Mono',monospace">{{ stage }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="platform" style="background:#F8FAFC;border-bottom:1px solid #E2E8F0">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,104px) 24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,72px);align-items:end">
+        <div style="min-width:0;display:flex;gap:clamp(18px,2vw,28px)">
+          <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:8px">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#D97706;font-family:'JetBrains Mono',monospace">01</span>
+            <span style="width:2px;flex:1;min-height:60px;background:linear-gradient(#D97706,rgba(217,119,6,0));display:block;border-radius:2px"></span>
+          </div>
+          <div style="min-width:0">
+            <span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;color:#D97706;font-family:'JetBrains Mono',monospace">WHAT IS KESTARA</span>
+            <h2 style="margin-top:14px;font-size:clamp(30px,3.8vw,50px);line-height:1.04;font-weight:700;letter-spacing:-.03em;color:#111827">Software<br>Engineering,<br><span style="font-weight:400;font-style:italic;color:#2563EB">orchestrated</span> by<br>intelligence.</h2>
+          </div>
+        </div>
+        <div style="min-width:0;max-width:540px;padding-bottom:6px">
+          <p style="font-size:17px;line-height:1.7;color:#334155">Kestara is not a code generator. It runs a controlled, phase-by-phase development lifecycle: every stage has defined inputs, a documented decision record and an approval gate before the next stage begins.</p>
+          <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 24px">
+            <sc-for list="{{ platformFacts }}" as="f" hint-placeholder-count="3">
+              <div style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:20px;font-weight:700;color:#111827;font-family:'JetBrains Mono',monospace">{{ f.value }}</span>
+                <span style="font-size:12px;letter-spacing:.06em;color:#64748B">{{ f.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:clamp(40px,4vw,56px);position:relative;background:#0B1220;border:1px solid #1E293B;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(8,13,22,.28)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(248,250,252,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 90% at 50% 0%,#000,transparent)"></div>
+        <div style="position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:640px;height:320px;background:radial-gradient(ellipse at center,rgba(37,99,235,.22),transparent 70%);pointer-events:none"></div>
+
+        <div style="position:relative;padding:clamp(28px,3.4vw,44px)">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,3vw,48px);align-items:start;min-height:196px">
+            <div style="min-width:0;grid-column:span 2">
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="font-size:11px;font-weight:600;letter-spacing:.2em;color:#F59E0B;font-family:'JetBrains Mono',monospace">PHASE {{ active.num }} / 12</span>
+                <span style="width:34px;height:1px;background:rgba(245,158,11,.5);display:block"></span>
+                <span style="font-size:11px;letter-spacing:.14em;color:#475569;font-family:'JetBrains Mono',monospace">AI-DLC</span>
+              </div>
+              <h3 style="margin-top:16px;font-size:clamp(24px,2.8vw,36px);line-height:1.12;font-weight:700;letter-spacing:-.02em;color:#F8FAFC">{{ active.name }}</h3>
+              <p style="margin-top:14px;max-width:640px;font-size:15.5px;line-height:1.68;color:#94A3B8">{{ active.detail }}</p>
+            </div>
+            <div style="min-width:0;display:flex;flex-direction:column;gap:12px">
+              <div style="padding:16px 18px;border-radius:12px;border:1px solid rgba(248,250,252,.1);background:rgba(248,250,252,.04)">
+                <div style="font-size:10.5px;letter-spacing:.18em;color:#475569;font-family:'JetBrains Mono',monospace">OWNER</div>
+                <div style="margin-top:8px;font-size:14.5px;font-weight:600;color:#F8FAFC">{{ active.owner }}</div>
+              </div>
+              <div style="padding:16px 18px;border-radius:12px;border:1px solid rgba(248,250,252,.1);background:rgba(248,250,252,.04)">
+                <div style="font-size:10.5px;letter-spacing:.18em;color:#475569;font-family:'JetBrains Mono',monospace">OUTPUT</div>
+                <div style="margin-top:8px;font-size:14.5px;font-weight:600;color:#93C5FD">{{ active.output }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:clamp(28px,3vw,44px);overflow-x:auto;overflow-y:hidden;padding-bottom:8px">
+            <div style="position:relative;min-width:1020px;padding-top:46px">
+              <div style="position:absolute;top:0;left:{{ markerPos }};transform:translateX(-50%);transition:left .55s cubic-bezier(.4,0,.2,1)">
+                <svg viewBox="0 0 128 104" width="38" height="31" aria-hidden="true" style="display:block;filter:drop-shadow(0 6px 16px rgba(37,99,235,.5))">
+                  <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"></path>
+                  <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"></path>
+                  <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"></path>
+                  <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"></path>
+                  <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"></path>
+                </svg>
+              </div>
+              <div style="position:absolute;top:52px;left:0;right:0;height:2px;background:#1E293B"></div>
+              <div style="position:absolute;top:52px;left:0;height:2px;width:{{ railFill }};background:linear-gradient(90deg,#1E3A8A,#3B82F6 70%,#F59E0B);transition:width .55s cubic-bezier(.4,0,.2,1)"></div>
+              <div style="position:relative;display:flex;align-items:flex-start">
+                <sc-for list="{{ stages }}" as="s" hint-placeholder-count="12">
+                  <button type="button" onClick="{{ s.onPick }}" aria-label="{{ s.name }}" style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:0;background:none;border:0;padding:0 6px;cursor:pointer;text-align:center;font-family:inherit">
+                    <span style="{{ s.dotStyle }}"></span>
+                    <span style="{{ s.numStyle }}">{{ s.num }}</span>
+                    <span style="{{ s.labelStyle }}">{{ s.name }}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          <p style="margin-top:14px;font-size:12px;color:#475569;font-family:'JetBrains Mono',monospace">Select a phase to inspect it · advances automatically until you do</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="aidlc" style="background:#111827">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,104px) 24px">
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between">
+        <div style="max-width:660px;min-width:0;display:flex;gap:clamp(18px,2vw,28px)">
+          <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:6px">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#F59E0B;font-family:'JetBrains Mono',monospace">02</span>
+            <span style="width:2px;flex:1;min-height:60px;background:linear-gradient(#F59E0B,rgba(245,158,11,0));display:block;border-radius:2px"></span>
+          </div>
+          <div style="min-width:0">
+            <span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;color:#F59E0B;font-family:'JetBrains Mono',monospace">AI-DLC</span>
+            <h2 style="margin-top:14px;font-size:clamp(28px,3.4vw,44px);line-height:1.1;font-weight:700;letter-spacing:-.025em;color:#F8FAFC">A Smarter Development<br>Lifecycle</h2>
+            <p style="margin-top:18px;font-size:16.5px;line-height:1.7;color:#94A3B8">Nine phases carry a project from an unwritten brief to a verified production deployment. Each one closes with a phase report: status, files changed, open decisions and the next phase.</p>
+          </div>
+        </div>
+        <a href="{{ githubUrl }}" style="font-size:14px;font-weight:600;color:#93C5FD;border-bottom:1px solid rgba(147,197,253,.4);padding-bottom:3px" style-hover="color:#F59E0B;border-color:#F59E0B;text-decoration:none">Read the methodology</a>
+      </div>
+      <div style="margin-top:clamp(40px,4vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+        <sc-for list="{{ phases }}" as="p" hint-placeholder-count="9">
+          <div style="position:relative;background:linear-gradient(180deg,rgba(248,250,252,.055),rgba(248,250,252,.02));border:1px solid rgba(248,250,252,.1);border-radius:14px;padding:26px 24px 28px" style-hover="border-color:rgba(59,130,246,.55)">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font-size:28px;font-weight:700;letter-spacing:-.02em;color:{{ p.color }};font-family:'JetBrains Mono',monospace">{{ p.num }}</span>
+              <span style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(248,250,252,.06);border:1px solid rgba(248,250,252,.1)">
+                <svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="#CBD5E1" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="{{ p.icon }}"></path></svg>
+              </span>
+            </div>
+            <h3 style="margin-top:18px;font-size:18px;font-weight:600;color:#F8FAFC">{{ p.name }}</h3>
+            <p style="margin-top:10px;font-size:14px;line-height:1.6;color:#94A3B8">{{ p.desc }}</p>
+            <div style="margin-top:20px;display:flex;align-items:center;gap:8px">
+              <span style="font-size:10.5px;letter-spacing:.14em;color:#64748B;font-family:'JetBrains Mono',monospace">{{ p.next }}</span>
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="#475569" stroke-width="1.8" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"></path></svg>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="background:#F8FAFC">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,104px) 24px">
+      <div style="display:flex;gap:clamp(18px,2vw,28px)">
+        <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:6px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#D97706;font-family:'JetBrains Mono',monospace">03</span>
+          <span style="width:2px;flex:1;min-height:60px;background:linear-gradient(#D97706,rgba(217,119,6,0));display:block;border-radius:2px"></span>
+        </div>
+        <div style="min-width:0">
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;color:#D97706;font-family:'JetBrains Mono',monospace">WHY KESTARA</span>
+          <h2 style="margin-top:14px;max-width:720px;font-size:clamp(28px,3.4vw,42px);line-height:1.1;font-weight:700;letter-spacing:-.025em;color:#111827">Capabilities defined by the<br>workflow, not by claims.</h2>
+        </div>
+      </div>
+      <div style="margin-top:clamp(40px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:20px">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="8">
+          <div style="background:#fff;border:1px solid #E2E8F0;border-radius:14px;box-shadow:0 2px 12px rgba(17,24,39,.05);padding:28px 24px" style-hover="border-color:#3B82F6;box-shadow:0 8px 24px rgba(37,99,235,.1)">
+            <span style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#EFF6FF;border:1px solid #DBEAFE">
+              <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="#2563EB" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="{{ f.icon }}"></path></svg>
+            </span>
+            <h3 style="margin-top:18px;font-size:17px;font-weight:600;color:#111827">{{ f.name }}</h3>
+            <p style="margin-top:10px;font-size:14px;line-height:1.62;color:#64748B">{{ f.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fff;border-top:1px solid #E2E8F0;border-bottom:1px solid #E2E8F0">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,104px) 24px">
+      <div style="max-width:760px;display:flex;gap:clamp(18px,2vw,28px)">
+        <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:6px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#D97706;font-family:'JetBrains Mono',monospace">04</span>
+          <span style="width:2px;flex:1;min-height:60px;background:linear-gradient(#D97706,rgba(217,119,6,0));display:block;border-radius:2px"></span>
+        </div>
+        <div style="min-width:0">
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;color:#D97706;font-family:'JetBrains Mono',monospace">KESTREL PRINCIPLES</span>
+          <h2 style="margin-top:14px;font-size:clamp(28px,3.4vw,42px);line-height:1.1;font-weight:700;letter-spacing:-.025em;color:#111827">Inspired by Precision.<br>Designed for Progress.</h2>
+        </div>
+      </div>
+      <div style="margin-top:clamp(40px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:0;border-top:1px solid #E2E8F0">
+        <sc-for list="{{ principles }}" as="pr" hint-placeholder-count="5">
+          <div style="padding:30px 24px 32px;border-bottom:1px solid #E2E8F0;border-right:1px solid #E2E8F0" style-hover="background:#F8FAFC">
+            <svg viewBox="0 0 128 104" width="30" height="24" aria-hidden="true" style="display:block;opacity:.9">
+              <path d="M6 6 L70 46 L46 50 Z" fill="#CBD5E1"></path>
+              <path d="M18 34 L74 54 L44 60 Z" fill="#94A3B8"></path>
+              <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"></path>
+              <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#111827"></path>
+              <path d="M58 62 L92 60 L34 98 Z" fill="#64748B"></path>
+            </svg>
+            <h3 style="margin-top:22px;font-size:19px;font-weight:600;letter-spacing:-.01em;color:#111827">{{ pr.name }}</h3>
+            <p style="margin-top:10px;font-size:14px;line-height:1.62;color:#64748B">{{ pr.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F8FAFC">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,104px) 24px">
+      <div style="display:flex;gap:clamp(18px,2vw,28px)">
+        <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:6px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#D97706;font-family:'JetBrains Mono',monospace">05</span>
+          <span style="width:2px;flex:1;min-height:60px;background:linear-gradient(#D97706,rgba(217,119,6,0));display:block;border-radius:2px"></span>
+        </div>
+        <div style="min-width:0">
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;color:#D97706;font-family:'JetBrains Mono',monospace">HOW KESTARA WORKS</span>
+          <h2 style="margin-top:14px;max-width:720px;font-size:clamp(28px,3.4vw,42px);line-height:1.1;font-weight:700;letter-spacing:-.025em;color:#111827">Four movements, each<br>with an approval gate.</h2>
+        </div>
+      </div>
+      <div style="margin-top:clamp(40px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <div style="background:#111827;border-radius:14px;padding:30px 26px 34px;position:relative;overflow:hidden">
+            <div style="position:absolute;top:-30px;right:-10px;font-size:110px;font-weight:700;color:rgba(248,250,252,.045);font-family:'JetBrains Mono',monospace;line-height:1">{{ s.num }}</div>
+            <div style="position:relative">
+              <span style="font-size:12px;font-weight:600;letter-spacing:.18em;color:#F59E0B;font-family:'JetBrains Mono',monospace">{{ s.num }} — {{ s.kicker }}</span>
+              <h3 style="margin-top:14px;font-size:21px;font-weight:600;color:#F8FAFC">{{ s.name }}</h3>
+              <p style="margin-top:12px;font-size:14px;line-height:1.65;color:#94A3B8">{{ s.desc }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="agents" style="background:linear-gradient(180deg,#080D16,#111827)">
+    <div style="max-width:1080px;margin:0 auto;padding:clamp(64px,7vw,104px) 24px">
+      <div style="display:flex;gap:clamp(18px,2vw,28px);text-align:left">
+        <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:6px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#F59E0B;font-family:'JetBrains Mono',monospace">06</span>
+          <span style="width:2px;flex:1;min-height:60px;background:linear-gradient(#F59E0B,rgba(245,158,11,0));display:block;border-radius:2px"></span>
+        </div>
+        <div style="min-width:0">
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;color:#F59E0B;font-family:'JetBrains Mono',monospace">AGENT ECOSYSTEM</span>
+          <h2 style="margin-top:14px;font-size:clamp(28px,3.4vw,42px);line-height:1.1;font-weight:700;letter-spacing:-.025em;color:#F8FAFC">One orchestrator.<br>Specialist agents per phase.</h2>
+          <p style="margin-top:18px;max-width:620px;font-size:16px;line-height:1.7;color:#94A3B8">The orchestrator holds the lifecycle state and hands each phase to the agent that owns it. Nothing advances without a passing check.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:clamp(40px,4vw,56px);display:flex;flex-direction:column;align-items:center">
+        <div style="padding:16px 34px;border-radius:12px;border:1px solid rgba(245,158,11,.45);background:rgba(245,158,11,.08)">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.2em;color:#FBBF24;font-family:'JetBrains Mono',monospace">KESTARA</div>
+          <div style="margin-top:6px;font-size:18px;font-weight:600;color:#F8FAFC">AI Orchestrator</div>
+        </div>
+        <div style="width:1px;height:44px;background:linear-gradient(#F59E0B,rgba(59,130,246,.5))"></div>
+        <div data-grid="4" style="width:100%;gap:14px">
+          <sc-for list="{{ agents }}" as="a" hint-placeholder-count="8">
+            <div style="padding:20px 14px;border-radius:12px;border:1px solid rgba(248,250,252,.1);background:rgba(248,250,252,.035);text-align:left" style-hover="border-color:#3B82F6;background:rgba(59,130,246,.08)">
+              <span style="display:block;width:8px;height:8px;border-radius:50%;background:#3B82F6"></span>
+              <div style="margin-top:14px;font-size:14.5px;font-weight:600;color:#F8FAFC">{{ a.name }}</div>
+              <div style="margin-top:6px;font-size:12px;line-height:1.5;color:#64748B">{{ a.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fff">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,104px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(36px,4vw,64px);align-items:center">
+      <div style="min-width:0">
+        <div style="display:flex;gap:clamp(18px,2vw,28px)">
+          <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:6px">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#D97706;font-family:'JetBrains Mono',monospace">07</span>
+            <span style="width:2px;flex:1;min-height:60px;background:linear-gradient(#D97706,rgba(217,119,6,0));display:block;border-radius:2px"></span>
+          </div>
+          <div style="min-width:0">
+            <span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;color:#D97706;font-family:'JetBrains Mono',monospace">OPEN THE WORKFLOW</span>
+            <h2 style="margin-top:14px;font-size:clamp(28px,3.2vw,40px);line-height:1.1;font-weight:700;letter-spacing:-.025em;color:#111827">Build with Kestara.</h2>
+            <p style="margin-top:18px;font-size:16.5px;line-height:1.7;color:#64748B">Explore the Kestara agent, clone the repository, customize the workflow and build your own AI-assisted development process.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px">
+          <a href="{{ githubUrl }}" style="display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 24px;border-radius:10px;background:#111827;color:#F8FAFC;font-size:15px;font-weight:600" style-hover="background:#080D16;color:#fff;text-decoration:none">
+            <svg viewBox="0 0 16 16" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+            View Repository on GitHub
+          </a>
+          <a href="{{ githubUrl }}" style="display:inline-flex;align-items:center;height:50px;padding:0 24px;border-radius:10px;color:#111827;font-size:15px;font-weight:600;border:1px solid #E2E8F0" style-hover="border-color:#111827;text-decoration:none;color:#111827">Read the Documentation</a>
+        </div>
+        <p style="margin-top:18px;font-size:12.5px;color:#94A3B8;font-family:'JetBrains Mono',monospace;word-break:break-all">{{ githubUrl }}</p>
+      </div>
+      <div style="min-width:0;background:#0B1220;border-radius:16px;border:1px solid #1E293B;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid #1E293B">
+          <span style="width:10px;height:10px;border-radius:50%;background:#334155;display:block"></span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#334155;display:block"></span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#334155;display:block"></span>
+          <span style="margin-left:10px;font-size:11.5px;color:#64748B;font-family:'JetBrains Mono',monospace">quick start</span>
+        </div>
+        <div style="padding:8px 0">
+          <sc-for list="{{ quickstart }}" as="q" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid rgba(30,41,59,.6)">
+              <span style="font-size:12px;font-weight:500;color:#F59E0B;font-family:'JetBrains Mono',monospace;flex:none">{{ q.num }}</span>
+              <span style="font-size:14.5px;font-weight:500;color:#E2E8F0">{{ q.name }}</span>
+              <span style="margin-left:auto;font-size:11.5px;color:#475569;font-family:'JetBrains Mono',monospace;text-align:right">{{ q.note }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:linear-gradient(135deg,#080D16 0%,#111827 45%,#172554 100%);position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(248,250,252,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,.04) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000,transparent)"></div>
+    <div style="position:relative;max-width:820px;margin:0 auto;padding:clamp(72px,8vw,120px) 24px;text-align:center">
+      <svg viewBox="0 0 128 104" width="54" height="44" aria-hidden="true" style="display:inline-block">
+        <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"></path>
+        <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"></path>
+        <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"></path>
+        <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"></path>
+        <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"></path>
+      </svg>
+      <h2 style="margin-top:28px;font-size:clamp(30px,4vw,50px);line-height:1.1;font-weight:700;letter-spacing:-.025em;color:#F8FAFC">Turn Your Next Idea Into Production.</h2>
+      <p style="margin:20px auto 0;max-width:560px;font-size:17px;line-height:1.7;color:#94A3B8">Bring structure, intelligence and precision to every stage of software development.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:36px">
+        <a href="{{ githubUrl }}" style="display:inline-flex;align-items:center;height:52px;padding:0 30px;border-radius:10px;background:linear-gradient(135deg,#60A5FA 0%,#2563EB 45%,#1E3A8A 100%);color:#fff;font-size:15px;font-weight:600;border:1px solid #3B82F6;box-shadow:0 8px 24px rgba(37,99,235,.3)" style-hover="background:linear-gradient(135deg,#3B82F6 0%,#1E3A8A 60%,#111827 100%);color:#fff;text-decoration:none">Start Building with Kestara</a>
+        <a href="#aidlc" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;border-radius:10px;color:#E2E8F0;font-size:15px;font-weight:600;border:1px solid rgba(248,250,252,.18)" style-hover="border-color:#F59E0B;color:#fff;text-decoration:none">Explore AI-DLC</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer style="background:#080D16;border-top:1px solid rgba(248,250,252,.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:56px 24px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:36px">
+    <div style="min-width:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg viewBox="0 0 128 104" width="30" height="24" aria-hidden="true" style="display:block">
+          <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"></path>
+          <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"></path>
+          <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"></path>
+          <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"></path>
+          <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"></path>
+        </svg>
+        <span style="font-size:15px;font-weight:600;letter-spacing:.24em;color:#F8FAFC">KESTARA</span>
+      </div>
+      <p style="margin-top:16px;font-size:13.5px;line-height:1.6;color:#64748B;max-width:260px">Build with Precision. Move with Speed. An AI-orchestrated development lifecycle.</p>
+    </div>
+    <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+      <div style="min-width:0">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.18em;color:#475569;font-family:'JetBrains Mono',monospace">{{ col.title }}</div>
+        <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+            <a href="{{ l.href }}" style="font-size:13.5px;color:#94A3B8" style-hover="color:#F8FAFC;text-decoration:none">{{ l.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:20px 24px 40px;border-top:1px solid rgba(248,250,252,.06);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between">
+    <span style="font-size:12px;color:#475569">Copyright © Kestara. All Rights Reserved.</span>
+    <span style="font-size:12px;color:#475569;font-family:'JetBrains Mono',monospace">AI-DLC · v1</span>
+  </div>
+</footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;githubUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;[KESTARA_GITHUB_REPOSITORY_URL]&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  state = { active: 0, auto: true, loading: true, loaderOut: false };
+
+  componentDidMount() {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let seen = false;
+    try { seen = window.sessionStorage.getItem("kestara_loader_v1") === "1"; } catch (e) { seen = false; }
+    if (seen || reduce) {
+      this.setState({ loading: false });
+    } else {
+      this.t1 = setTimeout(() => this.setState({ loaderOut: true }), 1900);
+      this.t2 = setTimeout(() => {
+        this.setState({ loading: false });
+        try { window.sessionStorage.setItem("kestara_loader_v1", "1"); } catch (e) {}
+      }, 2500);
+    }
+    this.onDocClick = (ev) => {
+      const el = ev.target;
+      const a = el && el.closest ? el.closest("a") : null;
+      if (!a) return;
+      const href = a.getAttribute("href") || "";
+      if (!href || href.charAt(0) === "#" || href.charAt(0) === "[" || a.target === "_blank") return;
+      if (href.indexOf(".dc.html") === -1) return;
+      ev.preventDefault();
+      this.setState({ loading: true, loaderOut: false });
+      setTimeout(() => { window.location.href = href; }, 720);
+    };
+    document.addEventListener("click", this.onDocClick, true);
+    if (reduce) return;
+    this.timer = setInterval(() => {
+      if (!this.state.auto) return;
+      this.setState((s) => ({ active: (s.active + 1) % 12 }));
+    }, 2800);
+  }
+
+  componentWillUnmount() {
+    if (this.timer) clearInterval(this.timer);
+    if (this.t1) clearTimeout(this.t1);
+    if (this.t2) clearTimeout(this.t2);
+    document.removeEventListener("click", this.onDocClick, true);
+  }
+
+  renderVals() {
+    const github = this.props.githubUrl || "[KESTARA_GITHUB_REPOSITORY_URL]";
+    const RAW = [
+      { num: "01", name: "Idea", note: "Intent and constraints captured.", color: "#64748B", owner: "Orchestrator", output: "Project brief", detail: "The intent is written down before anything else: what is being built, for whom, and what success looks like. No stack, no scope, no code yet." },
+      { num: "02", name: "Discovery", note: "Purpose, users, goals.", color: "#64748B", owner: "Orchestrator", output: "Discovery report", detail: "Purpose, target users, business goals, existing systems and anything that must remain unchanged are established with the developer." },
+      { num: "03", name: "Requirements", note: "Scope written down.", color: "#475569", owner: "Architect", output: "Requirement set", detail: "Pages, features, integrations and third-party APIs are confirmed and scoped. Ambiguity is resolved here rather than discovered mid-build." },
+      { num: "04", name: "Architecture", note: "Stack and structure decided.", color: "#2563EB", owner: "Architect", output: "Architecture decision record", detail: "Stack, theme approach, a single frontend framework and the project hierarchy are chosen and documented — one framework, never three." },
+      { num: "05", name: "Design", note: "Approved design analysed.", color: "#7C3AED", owner: "Designer", output: "Page + component inventory", detail: "The approved design is analysed into global components, a page inventory and per-page handoff units before a line of markup is written." },
+      { num: "06", name: "Development", note: "Components built once, reused.", color: "#0F766E", owner: "Developer", output: "Templates + components", detail: "The global design system is built first, then pages one at a time. Every shared element is built once and reused — no duplicated CSS or JS." },
+      { num: "07", name: "CMS / Backend", note: "Editable content modelled.", color: "#0891B2", owner: "CMS agent", output: "Content model", detail: "Content types, taxonomies and editable fields are modelled so administrators manage the site without touching code, with graceful empty states." },
+      { num: "08", name: "Testing", note: "Function, responsive, browser.", color: "#16A34A", owner: "QA agent", output: "QA report", detail: "Functional, responsive and cross-browser checks run per page against real viewports — part of building the page, not a pass at the end." },
+      { num: "09", name: "Security", note: "Escaping, nonces, permissions.", color: "#B45309", owner: "Security agent", output: "Security review", detail: "Input validation, output escaping, nonces, permissions, upload handling and API exposure are reviewed before release." },
+      { num: "10", name: "Performance", note: "Assets, queries, Core Web Vitals.", color: "#D97706", owner: "Performance agent", output: "Before / after metrics", detail: "Assets, render-blocking resources, images, fonts, caching and queries are optimized, then measured again and recorded." },
+      { num: "11", name: "Deployment", note: "Backup, migrate, verify URLs.", color: "#2563EB", owner: "Deployment agent", output: "Release checklist", detail: "Backup, database, files, URL integrity, SSL and cache follow a controlled path from staging to production." },
+      { num: "12", name: "Production", note: "Live verification checklist.", color: "#111827", owner: "Orchestrator", output: "Verification + docs", detail: "The live site is verified end to end — pages, forms, media, admin, SEO, mobile — and handed over with documentation." }
+    ];
+    const active = Math.min(this.state.active, RAW.length - 1);
+    const pick = (i) => () => this.setState({ active: i, auto: false });
+    const stages = RAW.map((s, i) => {
+      const done = i <= active;
+      const isActive = i === active;
+      return Object.assign({}, s, {
+        onPick: pick(i),
+        dotStyle: "width:14px;height:14px;border-radius:50%;background:" + (isActive ? s.color : (done ? "#1E3A8A" : "#0B1220")) +
+          ";border:2px solid " + (isActive ? "#F59E0B" : (done ? "#3B82F6" : "#334155")) +
+          ";box-shadow:" + (isActive ? "0 0 0 6px rgba(245,158,11,.16)" : "none") + ";transition:all .35s ease;display:block",
+        numStyle: "margin-top:14px;font-size:11px;letter-spacing:.14em;font-family:'JetBrains Mono',monospace;color:" + (isActive ? "#F59E0B" : "#475569"),
+        labelStyle: "margin-top:6px;width:100%;overflow-wrap:break-word;font-size:11.5px;line-height:1.35;font-weight:" + (isActive ? "600" : "500") + ";color:" + (isActive ? "#F8FAFC" : "#64748B") + ";transition:color .35s ease"
+      });
+    });
+    const pos = ((active + 0.5) / RAW.length) * 100 + "%";
+    return {
+      githubUrl: github,
+      loading: this.state.loading,
+      loaderOpacity: this.state.loaderOut ? "0" : "1",
+      platformFacts: [
+        { value: "12", label: "lifecycle phases" },
+        { value: "8", label: "specialist agents" },
+        { value: "1", label: "approval gate per page" }
+      ],
+      stages: stages,
+      active: stages[active],
+      markerPos: pos,
+      railFill: pos,
+      heroRail: ["DISCOVER", "REQUIREMENTS", "DESIGN", "DEVELOP", "TEST", "OPTIMIZE", "DEPLOY"],
+      phases: [
+        { num: "01", name: "Discovery", desc: "Project purpose, users, business goals and what must remain unchanged.", next: "NEXT · REQUIREMENTS", color: "#94A3B8", icon: "M10 3v3M10 14v3M3 10h3M14 10h3M10 7.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z" },
+        { num: "02", name: "Requirements", desc: "Pages, features, integrations and technical constraints confirmed with the developer.", next: "NEXT · ARCHITECTURE", color: "#94A3B8", icon: "M6 3h8v14H6zM8.5 7h3M8.5 10h3M8.5 13h3" },
+        { num: "03", name: "Architecture", desc: "Stack, theme approach, framework choice and project hierarchy decided before code.", next: "NEXT · DESIGN", color: "#3B82F6", icon: "M10 3 3 7l7 4 7-4-7-4ZM3 13l7 4 7-4" },
+        { num: "04", name: "Design Handoff", desc: "The approved design is analysed into components, page inventory and handoff units.", next: "NEXT · DEVELOPMENT", color: "#A78BFA", icon: "M4 16 14 6l-2-2L2 14v2ZM12 4l2-2 4 4-2 2" },
+        { num: "05", name: "Development", desc: "Global design system first, then page by page. Components built once and reused.", next: "NEXT · CMS", color: "#2DD4BF", icon: "M7 6 3 10l4 4M13 6l4 4-4 4" },
+        { num: "06", name: "CMS / Backend", desc: "Content types, taxonomies and editable fields, so admins never edit code.", next: "NEXT · TESTING", color: "#22D3EE", icon: "M10 3c3.5 0 6 1 6 2.5v9C16 16 13.5 17 10 17s-6-1-6-2.5v-9C4 4 6.5 3 10 3ZM4 9.5c0 1.5 2.5 2.5 6 2.5s6-1 6-2.5" },
+        { num: "07", name: "QA & Testing", desc: "Functional, responsive, accessibility and cross-browser checks per page.", next: "NEXT · SECURITY", color: "#4ADE80", icon: "M4 10.5 8 14.5 16 5.5" },
+        { num: "08", name: "Security & Performance", desc: "Escaping, permissions, asset optimization and measured Core Web Vitals.", next: "NEXT · DEPLOYMENT", color: "#FBBF24", icon: "M10 3 4 5.5v5c0 3.5 6 6.5 6 6.5s6-3 6-6.5v-5L10 3Z" },
+        { num: "09", name: "Deployment", desc: "Backup, migrate, update URLs, configure SSL and verify production.", next: "GATE · APPROVAL", color: "#60A5FA", icon: "M10 16V5M6 9l4-4 4 4M4 17h12" }
+      ],
+      features: [
+        { name: "Structured Development", desc: "Defined phases with approval gates instead of unbounded code generation.", icon: "M4 5h12M4 10h8M4 15h10" },
+        { name: "AI Orchestration", desc: "One orchestrator holds lifecycle state and routes each phase to its specialist.", icon: "M10 3v4M10 13v4M5 10h10M6 6l8 8M14 6l-8 8" },
+        { name: "Design-to-Code Workflow", desc: "Approved designs become implementation-ready page and component specs.", icon: "M3 5h14v10H3zM3 8h14M7 8v7" },
+        { name: "Reusable Components", desc: "Shared UI is built once. No duplicated CSS, JavaScript or template logic.", icon: "M4 4h5v5H4zM11 4h5v5h-5zM4 11h5v5H4zM11 11h5v5h-5z" },
+        { name: "CMS Architecture", desc: "Content modelled as fields, post types and taxonomies with graceful empty states.", icon: "M4 6h12M4 10h12M4 14h7" },
+        { name: "Automated QA", desc: "Responsive, functional and accessibility checks run before a page is approved.", icon: "M4 10.5 8 14.5 16 5.5" },
+        { name: "Performance Optimization", desc: "Measured before and after: assets, render-blocking, images, queries.", icon: "M4 15V9M8 15V5M12 15v-4M16 15V7" },
+        { name: "Deployment Workflow", desc: "Controlled staging to production with backups, URL integrity and verification.", icon: "M10 16V5M6 9l4-4 4 4M4 17h12" }
+      ],
+      principles: [
+        { name: "Precision", desc: "Every stage follows a defined engineering process." },
+        { name: "Focus", desc: "Requirements, architecture and implementation stay aligned." },
+        { name: "Agility", desc: "Teams move quickly without abandoning engineering discipline." },
+        { name: "Observation", desc: "Continuous analysis and validation surface issues throughout development." },
+        { name: "Execution", desc: "Ideas become tested, production-ready software through a structured lifecycle." }
+      ],
+      steps: [
+        { num: "01", kicker: "DEFINE", name: "Define", desc: "Capture the idea, requirements, constraints and goals before any decision is made." },
+        { num: "02", kicker: "DESIGN", name: "Design", desc: "Translate requirements into architecture, UX and documented technical decisions." },
+        { num: "03", kicker: "BUILD", name: "Build", desc: "Develop frontend, backend, CMS and integrations through specialist workflows." },
+        { num: "04", kicker: "LAUNCH", name: "Validate & Launch", desc: "Test, optimize, secure and deploy — then verify the live product." }
+      ],
+      agents: [
+        { name: "Architect", desc: "Stack and structure" },
+        { name: "Designer", desc: "Design analysis" },
+        { name: "Developer", desc: "Frontend build" },
+        { name: "CMS", desc: "Content model" },
+        { name: "SEO", desc: "Metadata and structure" },
+        { name: "QA", desc: "Functional and responsive" },
+        { name: "Performance", desc: "Assets and vitals" },
+        { name: "Deployment", desc: "Release and verify" }
+      ],
+      quickstart: [
+        { num: "01", name: "Clone", note: "repository" },
+        { num: "02", name: "Configure", note: "project settings" },
+        { num: "03", name: "Connect", note: "your platform" },
+        { num: "04", name: "Run Kestara", note: "discovery phase" },
+        { num: "05", name: "Build", note: "page by page" }
+      ],
+      footerCols: [
+        { title: "PLATFORM", links: [{ label: "What is Kestara", href: "#platform" }, { label: "AI-DLC", href: "#aidlc" }, { label: "Why Kestara", href: "#why" }, { label: "Agents", href: "#agents" }] },
+        { title: "DEVELOPERS", links: [{ label: "GitHub Repository", href: github }, { label: "Documentation", href: github }, { label: "Quick Start", href: github }] },
+        { title: "COMPANY", links: [{ label: "About Us", href: "Kestara%20About.dc.html" }, { label: "Contact Us", href: "Kestara%20Contact.dc.html" }, { label: "Design System", href: "Kestara%20Design%20System.dc.html" }] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

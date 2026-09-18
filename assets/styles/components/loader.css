@@ -1,0 +1,98 @@
+/* Full-screen loader — shared across every page */
+
+@keyframes kRise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes kSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes kSpinReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes kPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
+@keyframes kDraw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes kBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes kLoad { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes kFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes kWingA { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-8deg) translateX(-2px); } }
+@keyframes kWingB { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg) translateX(-1px); } }
+@keyframes kSlip { 0%, 100% { opacity: 1; transform: translateX(0); } 50% { opacity: .4; transform: translateX(-3px); } }
+
+.k-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, var(--graphite), var(--midnight) 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+.k-loader.is-out { opacity: 0; }
+.k-loader.is-hidden { display: none; }
+
+.k-loader__hud {
+  position: relative;
+  width: min(56vw, 220px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.k-loader__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: kSpin var(--dur-spin-outer) linear infinite;
+}
+.k-loader__ring--inner {
+  animation: kSpinReverse var(--dur-spin-inner) linear infinite;
+}
+.k-loader__mark {
+  position: relative;
+  width: 46%;
+  filter: drop-shadow(0 10px 30px rgba(37, 99, 235, .5));
+  animation: kFloat var(--dur-float) ease-in-out infinite;
+}
+.k-loader__mark path:nth-child(1) { transform-box: fill-box; transform-origin: 90% 80%; animation: kWingA var(--dur-wing) ease-in-out infinite; }
+.k-loader__mark path:nth-child(2) { transform-box: fill-box; transform-origin: 90% 70%; animation: kWingB var(--dur-wing) ease-in-out .12s infinite; }
+.k-loader__mark path:nth-child(3) { transform-box: fill-box; animation: kSlip var(--dur-wing) ease-in-out .2s infinite; }
+.k-loader__mark path:nth-child(5) { transform-box: fill-box; transform-origin: 80% 10%; animation: kWingB var(--dur-wing) ease-in-out .06s infinite; }
+
+.k-loader__word {
+  margin-top: 14px;
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 600;
+  letter-spacing: .42em;
+  text-indent: .42em;
+  color: var(--cloud);
+  animation: kRise .6s ease .1s both;
+}
+.k-loader__tagline {
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--slate-400);
+  animation: kRise .6s ease .2s both;
+}
+.k-loader__track {
+  margin-top: 26px;
+  width: min(78vw, 300px);
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(148, 163, 184, .16);
+  overflow: hidden;
+}
+.k-loader__fill {
+  height: 100%;
+  background: var(--gradient-loader-bar);
+  transform-origin: left;
+  animation: kLoad var(--dur-loader-bar) cubic-bezier(.4, 0, .2, 1) both;
+}
+.k-loader__status {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: .2em;
+  color: var(--slate-600);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k-loader { display: none; }
+}

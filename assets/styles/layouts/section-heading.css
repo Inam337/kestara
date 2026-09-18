@@ -1,0 +1,48 @@
+/* Three-part section-heading pattern: index rail + eyebrow + H2 */
+.section-heading {
+  display: flex;
+  gap: clamp(18px, 2vw, 28px);
+}
+.section-heading__rail {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 6px;
+}
+.section-heading__num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  color: var(--copper);
+}
+.section-heading__num--dark { color: var(--amber); }
+.section-heading__tick {
+  width: 2px;
+  flex: 1;
+  min-height: 60px;
+  border-radius: 2px;
+  background: linear-gradient(var(--copper), rgba(217, 119, 6, 0));
+}
+.section-heading__tick--dark { background: linear-gradient(var(--amber), rgba(245, 158, 11, 0)); }
+.section-heading__body { min-width: 0; }
+.section-heading__eyebrow { color: var(--copper); }
+.section-heading__eyebrow--dark { color: var(--amber); }
+.section-heading__h2 {
+  margin-top: 14px;
+  color: var(--graphite);
+}
+.section-heading__h2--dark { color: var(--cloud); }
+
+.section {
+  padding: var(--section-pad-v) var(--section-pad-h);
+}
+.section-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-end;
+  justify-content: space-between;
+}

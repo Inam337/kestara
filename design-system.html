@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System — Kestara</title>
+<meta name="description" content="Kestara design system: colour, type, spacing, components and motion tokens for every Kestara surface.">
+<link rel="canonical" href="design-system.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logos/kestara-favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-700.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-400.woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="assets/styles/global.css">
+<link rel="stylesheet" href="assets/styles/pages/design-system.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<div role="status" aria-label="Loading Kestara" class="k-loader" data-loader="short">
+  <div class="k-loader__hud">
+    <svg class="k-loader__ring" viewBox="0 0 400 400" aria-hidden="true">
+      <circle cx="200" cy="200" r="188" fill="none" stroke="rgba(148,163,184,.14)" stroke-width="2"/>
+      <circle cx="200" cy="200" r="188" fill="none" stroke="#3B82F6" stroke-width="3" stroke-dasharray="210 971" stroke-linecap="round"/>
+      <circle cx="200" cy="200" r="188" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="64 1117" stroke-dashoffset="-640" stroke-linecap="round"/>
+    </svg>
+    <svg class="k-loader__ring k-loader__ring--inner" viewBox="0 0 400 400" aria-hidden="true">
+      <circle cx="200" cy="200" r="152" fill="none" stroke="rgba(59,130,246,.2)" stroke-width="1" stroke-dasharray="4 10"/>
+      <circle cx="200" cy="200" r="152" fill="none" stroke="rgba(245,158,11,.75)" stroke-width="2" stroke-dasharray="40 915" stroke-linecap="round"/>
+    </svg>
+    <svg class="k-loader__mark" viewBox="0 0 128 104" role="img" aria-label="Kestara">
+      <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"/>
+      <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"/>
+      <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"/>
+      <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"/>
+      <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"/>
+    </svg>
+  </div>
+  <div class="k-loader__word">KESTARA</div>
+  <div class="k-loader__tagline">Build with Precision. Move with Speed.</div>
+  <div class="k-loader__track"><div class="k-loader__fill"></div></div>
+  <div class="k-loader__status">INITIALIZING KESTARA</div>
+</div>
+
+<header class="k-header">
+  <div class="k-header__bar navbar-dark">
+    <a class="k-header__logo" href="index.html">
+      <svg viewBox="0 0 128 104" width="34" height="28" aria-hidden="true">
+        <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"/>
+        <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"/>
+        <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"/>
+        <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"/>
+        <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"/>
+      </svg>
+      <span class="k-header__logo-text">KESTARA</span>
+    </a>
+    <button class="navbar-toggler k-header__toggler" type="button" data-bs-toggle="collapse" data-bs-target="#kNavCollapse" aria-controls="kNavCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <nav id="kNavCollapse" class="k-header__nav collapse" aria-label="Primary">
+      <a class="k-header__link" href="index.html">Home</a>
+      <a class="k-header__link" href="about.html">About</a>
+      <a class="k-header__link" href="contact.html">Contact</a>
+      <a class="k-header__link k-header__link--active" href="design-system.html" aria-current="page">Design System</a>
+      <a class="k-header__github" href="https://github.com/Inam337/kestara-wordpress-agent">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="ds-hero">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="ds-hero__inner">
+    <span class="eyebrow" style="color:var(--amber)">DESIGN SYSTEM · V1</span>
+    <h1 class="ds-hero__title">Kestara Brand &amp; Interface Foundations</h1>
+    <p class="ds-hero__desc">Colour, type, spacing, components and motion tokens for every Kestara surface. Graphite for engineering, blue for intelligence, copper for precision, white for clarity.</p>
+    <nav class="ds-toc" aria-label="Jump to section">
+      <a href="#logo">Logo</a>
+      <a href="#colour">Colour</a>
+      <a href="#type">Typography</a>
+      <a href="#components">Components</a>
+      <a href="#space">Space &amp; radius</a>
+      <a href="#motion">Motion</a>
+    </nav>
+  </div>
+</section>
+
+<section id="logo" class="ds-section" style="background:#fff">
+  <div class="ds-section__inner">
+    <span class="eyebrow ds-eyebrow">01 · LOGO</span>
+    <h2 class="ds-h2">The mark</h2>
+    <p class="ds-lede">A geometric kestrel: swept wings, a copper precision sliver, and a forward silhouette whose trajectory reads upward. Minimum size 24px tall. Clear space equal to the mark's height.</p>
+    <div data-grid="4">
+      <div class="ds-logo-card ds-logo-card--dark">
+        <svg viewBox="0 0 128 104" width="96" aria-hidden="true">
+          <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"/>
+          <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"/>
+          <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"/>
+          <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"/>
+          <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"/>
+        </svg>
+        <span class="ds-logo-card__label">MARK · DARK</span>
+      </div>
+      <div class="ds-logo-card ds-logo-card--light">
+        <svg viewBox="0 0 128 104" width="96" aria-hidden="true">
+          <path d="M6 6 L70 46 L46 50 Z" fill="#CBD5E1"/>
+          <path d="M18 34 L74 54 L44 60 Z" fill="#94A3B8"/>
+          <path d="M24 52 L54 60 L36 66 Z" fill="#2563EB"/>
+          <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#111827"/>
+          <path d="M58 62 L92 60 L34 98 Z" fill="#64748B"/>
+        </svg>
+        <span class="ds-logo-card__label">MARK · LIGHT</span>
+      </div>
+      <div class="ds-logo-card ds-logo-card--dark">
+        <div style="display:flex;align-items:center;gap:12px">
+          <svg viewBox="0 0 128 104" width="34" aria-hidden="true">
+            <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"/>
+            <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"/>
+            <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"/>
+            <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"/>
+            <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"/>
+          </svg>
+          <span style="font-size:16px;font-weight:600;letter-spacing:.24em;color:#F8FAFC">KESTARA</span>
+        </div>
+        <span class="ds-logo-card__label">HORIZONTAL LOCKUP</span>
+      </div>
+      <div class="ds-logo-card ds-logo-card--light">
+        <div class="ds-app-icon">
+          <svg viewBox="0 0 128 104" width="38" aria-hidden="true">
+            <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"/>
+            <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"/>
+            <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"/>
+            <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"/>
+            <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"/>
+          </svg>
+        </div>
+        <span class="ds-logo-card__label">APP ICON</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="colour" class="ds-section" style="background:var(--cloud)">
+  <div class="ds-section__inner">
+    <span class="eyebrow ds-eyebrow">02 · COLOUR</span>
+    <h2 class="ds-h2">Core palette</h2>
+    <div data-grid="4" style="margin-top:32px">
+      <div class="ds-swatch"><div class="ds-swatch__block" style="background:#111827"></div><div class="ds-swatch__body"><div class="ds-swatch__name">Deep Graphite</div><div class="ds-swatch__hex">#111827</div><div class="ds-swatch__desc">Primary. Headers, hero, footer, dark sections.</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__block" style="background:#080D16"></div><div class="ds-swatch__body"><div class="ds-swatch__name">Midnight</div><div class="ds-swatch__hex">#080D16</div><div class="ds-swatch__desc">Primary dark. Gradient base, footer ground.</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__block" style="background:#2563EB"></div><div class="ds-swatch__body"><div class="ds-swatch__name">Kestrel Blue</div><div class="ds-swatch__hex">#2563EB</div><div class="ds-swatch__desc">Secondary. Buttons, links, active states, workflow lines.</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__block" style="background:#D97706"></div><div class="ds-swatch__body"><div class="ds-swatch__name">Copper Gold</div><div class="ds-swatch__hex">#D97706</div><div class="ds-swatch__desc">Accent. Eyebrows, milestones, precision details.</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__block" style="background:#F59E0B"></div><div class="ds-swatch__body"><div class="ds-swatch__name">Kestrel Amber</div><div class="ds-swatch__hex">#F59E0B</div><div class="ds-swatch__desc">Accent light. Logo sliver, highlights, hover details.</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__block" style="background:#F8FAFC"></div><div class="ds-swatch__body"><div class="ds-swatch__name">Cloud White</div><div class="ds-swatch__hex">#F8FAFC</div><div class="ds-swatch__desc">Background. Main page and content sections.</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__block" style="background:#64748B"></div><div class="ds-swatch__body"><div class="ds-swatch__name">Slate</div><div class="ds-swatch__hex">#64748B</div><div class="ds-swatch__desc">Muted text, secondary labels, meta.</div></div></div>
+    </div>
+
+    <h3 class="ds-h3">Semantic &amp; surface</h3>
+    <div data-grid="4" style="margin-top:20px">
+      <div class="ds-semantic-pill"><span class="ds-semantic-pill__swatch" style="background:#FFFFFF"></span><div><div class="ds-semantic-pill__name">Surface</div><div class="ds-semantic-pill__hex">#FFFFFF</div></div></div>
+      <div class="ds-semantic-pill"><span class="ds-semantic-pill__swatch" style="background:#E2E8F0"></span><div><div class="ds-semantic-pill__name">Border</div><div class="ds-semantic-pill__hex">#E2E8F0</div></div></div>
+      <div class="ds-semantic-pill"><span class="ds-semantic-pill__swatch" style="background:#111827"></span><div><div class="ds-semantic-pill__name">Text</div><div class="ds-semantic-pill__hex">#111827</div></div></div>
+      <div class="ds-semantic-pill"><span class="ds-semantic-pill__swatch" style="background:#334155"></span><div><div class="ds-semantic-pill__name">Body</div><div class="ds-semantic-pill__hex">#334155</div></div></div>
+      <div class="ds-semantic-pill"><span class="ds-semantic-pill__swatch" style="background:#1E3A8A"></span><div><div class="ds-semantic-pill__name">Deep Blue</div><div class="ds-semantic-pill__hex">#1E3A8A</div></div></div>
+      <div class="ds-semantic-pill"><span class="ds-semantic-pill__swatch" style="background:#EFF6FF"></span><div><div class="ds-semantic-pill__name">Blue Tint</div><div class="ds-semantic-pill__hex">#EFF6FF</div></div></div>
+      <div class="ds-semantic-pill"><span class="ds-semantic-pill__swatch" style="background:#16A34A"></span><div><div class="ds-semantic-pill__name">Success</div><div class="ds-semantic-pill__hex">#16A34A</div></div></div>
+      <div class="ds-semantic-pill"><span class="ds-semantic-pill__swatch" style="background:#DC2626"></span><div><div class="ds-semantic-pill__name">Error</div><div class="ds-semantic-pill__hex">#DC2626</div></div></div>
+    </div>
+
+    <h3 class="ds-h3">Usage balance</h3>
+    <div class="ds-usage-bar">
+      <div class="ds-usage-bar__seg" style="flex:60;background:#F8FAFC;color:#475569">60% WHITE</div>
+      <div class="ds-usage-bar__seg" style="flex:25;background:#111827;color:#F8FAFC">25% GRAPHITE</div>
+      <div class="ds-usage-bar__seg" style="flex:10;background:#2563EB;color:#FFFFFF">10% BLUE</div>
+      <div class="ds-usage-bar__seg" style="flex:5;background:#F59E0B;color:#111827">5%</div>
+    </div>
+    <p class="ds-caption">Copper stays a precision accent — logo details, milestones, key highlights — never the dominant colour.</p>
+
+    <h3 class="ds-h3">AI-DLC stage indicators</h3>
+    <div class="ds-stage-row">
+      <span class="ds-stage-pill"><span class="dot" style="background:#64748B"></span><span class="ds-stage-pill__name">Discovery</span><span class="ds-stage-pill__hex">#64748B</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#475569"></span><span class="ds-stage-pill__name">Requirements</span><span class="ds-stage-pill__hex">#475569</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#2563EB"></span><span class="ds-stage-pill__name">Architecture</span><span class="ds-stage-pill__hex">#2563EB</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#7C3AED"></span><span class="ds-stage-pill__name">Design</span><span class="ds-stage-pill__hex">#7C3AED</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#0F766E"></span><span class="ds-stage-pill__name">Development</span><span class="ds-stage-pill__hex">#0F766E</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#0891B2"></span><span class="ds-stage-pill__name">CMS</span><span class="ds-stage-pill__hex">#0891B2</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#16A34A"></span><span class="ds-stage-pill__name">QA</span><span class="ds-stage-pill__hex">#16A34A</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#B45309"></span><span class="ds-stage-pill__name">Security</span><span class="ds-stage-pill__hex">#B45309</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#D97706"></span><span class="ds-stage-pill__name">Performance</span><span class="ds-stage-pill__hex">#D97706</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#2563EB"></span><span class="ds-stage-pill__name">Deployment</span><span class="ds-stage-pill__hex">#2563EB</span></span>
+      <span class="ds-stage-pill"><span class="dot" style="background:#111827"></span><span class="ds-stage-pill__name">Production</span><span class="ds-stage-pill__hex">#111827</span></span>
+    </div>
+
+    <h3 class="ds-h3">Hero gradient</h3>
+    <div class="ds-gradient-bar"><span class="ds-gradient-bar__caption">#080D16 → #111827 → #172554</span></div>
+  </div>
+</section>
+
+<section id="type" class="ds-section" style="background:#fff">
+  <div class="ds-section__inner">
+    <span class="eyebrow ds-eyebrow">03 · TYPOGRAPHY</span>
+    <h2 class="ds-h2">Montserrat + JetBrains Mono</h2>
+    <p class="ds-lede">Montserrat carries all headings and body copy: modern, clean, technical. JetBrains Mono handles eyebrows, phase numbers, metrics and code — anything that should read as machine output.</p>
+    <div class="ds-type-table">
+      <div class="ds-type-row"><span class="ds-type-row__token">display / hero</span><span class="ds-type-row__sample" style="font-size:48px;font-weight:700;letter-spacing:-.025em">Build with Precision.</span><span class="ds-type-row__spec">48–62 / 1.06</span></div>
+      <div class="ds-type-row"><span class="ds-type-row__token">h1 / page</span><span class="ds-type-row__sample" style="font-size:38px;font-weight:700;letter-spacing:-.025em">Engineering the future</span><span class="ds-type-row__spec">32–54 / 1.08</span></div>
+      <div class="ds-type-row"><span class="ds-type-row__token">h2 / section</span><span class="ds-type-row__sample" style="font-size:30px;font-weight:700;letter-spacing:-.02em">A smarter lifecycle</span><span class="ds-type-row__spec">28–44 / 1.14</span></div>
+      <div class="ds-type-row"><span class="ds-type-row__token">h3 / card</span><span class="ds-type-row__sample" style="font-size:19px;font-weight:600;letter-spacing:-.01em">Structured Development</span><span class="ds-type-row__spec">17–21 / 1.3</span></div>
+      <div class="ds-type-row"><span class="ds-type-row__token">body / large</span><span class="ds-type-row__sample" style="font-size:17px">Kestara orchestrates the lifecycle.</span><span class="ds-type-row__spec">16–18.5 / 1.7</span></div>
+      <div class="ds-type-row"><span class="ds-type-row__token">body / base</span><span class="ds-type-row__sample" style="font-size:14.5px">Components built once and reused.</span><span class="ds-type-row__spec">14 / 1.6</span></div>
+      <div class="ds-type-row"><span class="ds-type-row__token">mono / eyebrow</span><span class="ds-type-row__sample font-mono" style="font-size:12px;font-weight:600;letter-spacing:.2em">WHAT IS KESTARA</span><span class="ds-type-row__spec">JetBrains Mono 11–12</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="components" class="ds-section" style="background:var(--cloud)">
+  <div class="ds-section__inner">
+    <span class="eyebrow ds-eyebrow">04 · COMPONENTS</span>
+    <h2 class="ds-h2">Buttons, fields, cards, badges</h2>
+
+    <div data-grid="2" style="margin-top:32px">
+      <div class="ds-comp-card ds-comp-card--light">
+        <div class="ds-comp-card__label">BUTTONS · LIGHT</div>
+        <div class="ds-comp-row">
+          <button type="button" class="btn-k btn-k-primary">Primary</button>
+          <button type="button" class="btn-k btn-k-secondary-light">Secondary</button>
+          <button type="button" class="btn-k btn-k-accent">Accent</button>
+          <button type="button" class="btn-k btn-k-ghost">Ghost</button>
+        </div>
+        <div class="ds-comp-row">
+          <button type="button" class="btn-k btn-k--sm" disabled>Disabled</button>
+          <button type="button" class="btn-k btn-k--sm btn-k-secondary-light" style="outline:2px solid var(--kestrel-blue);outline-offset:2px">Focus ring</button>
+        </div>
+      </div>
+      <div class="ds-comp-card ds-comp-card--dark">
+        <div class="ds-comp-card__label">BUTTONS · DARK</div>
+        <div class="ds-comp-row">
+          <button type="button" class="btn-k btn-k-primary">Primary</button>
+          <button type="button" class="btn-k btn-k-secondary-dark">Secondary</button>
+          <button type="button" class="btn-k btn-k-dev">Developer</button>
+        </div>
+        <p class="ds-comp-caption">Height 48–52px · radius 10px · weight 600 · hover darkens one step · focus 2px blue ring with 2px offset.</p>
+      </div>
+    </div>
+
+    <div data-grid="2" style="margin-top:20px">
+      <div class="ds-comp-card ds-comp-card--light">
+        <div class="ds-comp-card__label">FORM FIELDS</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="field">
+            <label class="field__label" for="ds-default">Default <span class="field__required">*</span></label>
+            <input class="field__control" id="ds-default" type="text" placeholder="Placeholder text">
+          </div>
+          <div class="field">
+            <label class="field__label" for="ds-error">Error state</label>
+            <input class="field__control" id="ds-error" type="text" value="not-an-email" aria-invalid="true" style="border-color:var(--error)">
+            <span class="field__error">Enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="ds-select">Select</label>
+            <select class="field__control" id="ds-select">
+              <option>General enquiry</option>
+              <option>Partnership</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="ds-comp-card ds-comp-card--light">
+        <div class="ds-comp-card__label">BADGES &amp; PILLS</div>
+        <div class="ds-comp-row">
+          <span class="badge-k" style="background:#DCFCE7;color:#166534;border-color:#BBF7D0">Complete</span>
+          <span class="badge-k" style="background:#FEF3C7;color:#92400E;border-color:#FDE68A">In progress</span>
+          <span class="badge-k" style="background:#FEE2E2;color:#991B1B;border-color:#FECACA">Blocked</span>
+          <span class="badge-k" style="background:#EFF6FF;color:#1E3A8A;border-color:#DBEAFE">Under review</span>
+          <span class="badge-k" style="background:#F1F5F9;color:#475569;border-color:#E2E8F0">Pending</span>
+        </div>
+      </div>
+      <div class="ds-comp-card ds-comp-card--light" style="grid-column:1/-1">
+        <div class="ds-comp-card__label">CARD</div>
+        <div class="ds-sample-card" style="max-width:340px">
+          <span class="icon-chip"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12M4 10h8M4 15h10"/></svg></span>
+          <h4 style="margin-top:16px;font-size:16.5px;font-weight:600;color:var(--graphite)">Structured Development</h4>
+          <p style="margin-top:8px;font-size:14px;line-height:1.6;color:var(--slate)">Defined phases with approval gates instead of unbounded code generation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="space" class="ds-section" style="background:#fff">
+  <div class="ds-section__inner">
+    <span class="eyebrow ds-eyebrow">05 · SPACE, RADIUS, ELEVATION</span>
+    <div data-grid="3" style="margin-top:32px">
+      <div class="ds-token-card">
+        <div class="ds-spacing-row"><span class="ds-spacing-row__label font-mono">4 / xs</span><span class="ds-spacing-row__bar" style="width:8%"></span></div>
+        <div class="ds-spacing-row"><span class="ds-spacing-row__label font-mono">8 / sm</span><span class="ds-spacing-row__bar" style="width:16%"></span></div>
+        <div class="ds-spacing-row"><span class="ds-spacing-row__label font-mono">16 / md</span><span class="ds-spacing-row__bar" style="width:32%"></span></div>
+        <div class="ds-spacing-row"><span class="ds-spacing-row__label font-mono">24 / lg</span><span class="ds-spacing-row__bar" style="width:48%"></span></div>
+        <div class="ds-spacing-row"><span class="ds-spacing-row__label font-mono">40 / xl</span><span class="ds-spacing-row__bar" style="width:72%"></span></div>
+        <div class="ds-spacing-row"><span class="ds-spacing-row__label font-mono">64 / 2xl</span><span class="ds-spacing-row__bar" style="width:100%"></span></div>
+      </div>
+      <div class="ds-token-card">
+        <div class="ds-radius-row">
+          <div class="ds-radius-swatch"><div class="ds-radius-swatch__box" style="border-radius:8px"></div><span class="ds-radius-swatch__label">8px</span></div>
+          <div class="ds-radius-swatch"><div class="ds-radius-swatch__box" style="border-radius:10px"></div><span class="ds-radius-swatch__label">10px</span></div>
+          <div class="ds-radius-swatch"><div class="ds-radius-swatch__box" style="border-radius:14px"></div><span class="ds-radius-swatch__label">14px</span></div>
+          <div class="ds-radius-swatch"><div class="ds-radius-swatch__box" style="border-radius:20px"></div><span class="ds-radius-swatch__label">20px</span></div>
+        </div>
+      </div>
+      <div class="ds-token-card">
+        <div class="ds-elevation-row">
+          <div class="ds-elevation-box" style="box-shadow:0 2px 4px rgba(17,24,39,.06)">sm · 0 2px 4px rgba(17,24,39,.06)</div>
+          <div class="ds-elevation-box" style="box-shadow:0 2px 12px rgba(17,24,39,.06)">md · 0 2px 12px rgba(17,24,39,.06)</div>
+          <div class="ds-elevation-box" style="box-shadow:0 24px 60px rgba(8,13,22,.18)">lg · 0 24px 60px rgba(8,13,22,.18)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="motion" class="ds-section" style="background:var(--cloud);border-bottom:0">
+  <div class="ds-section__inner">
+    <span class="eyebrow ds-eyebrow">06 · MOTION &amp; ACCESSIBILITY</span>
+    <div data-grid="2" style="margin-top:32px">
+      <div class="ds-token-card" style="background:#fff">
+        <h3 style="font-size:16.5px;font-weight:600;color:var(--graphite)">Motion</h3>
+        <div class="ds-motion-row"><span class="ds-motion-row__token">160ms ease</span><span class="ds-motion-row__desc">Colour and border transitions on hover and focus.</span></div>
+        <div class="ds-motion-row"><span class="ds-motion-row__token">550ms cubic</span><span class="ds-motion-row__desc">Lifecycle rail marker and progress fill — cubic-bezier(.4,0,.2,1).</span></div>
+        <div class="ds-motion-row"><span class="ds-motion-row__token">700ms rise</span><span class="ds-motion-row__desc">Section and hero entrance: 16px translate with fade.</span></div>
+        <div class="ds-motion-row"><span class="ds-motion-row__token">2.4s pulse</span><span class="ds-motion-row__desc">Live status dots on the badge and lifecycle ticker.</span></div>
+        <div class="ds-motion-row"><span class="ds-motion-row__token">reduced-motion</span><span class="ds-motion-row__desc">All animation and autoplay disabled when the user prefers reduced motion.</span></div>
+      </div>
+      <div class="ds-token-card" style="background:#fff">
+        <h3 style="font-size:16.5px;font-weight:600;color:var(--graphite)">Accessibility rules</h3>
+        <div class="ds-a11y-row"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span class="ds-a11y-row__text">Body text holds 4.5:1 contrast; headline-scale type holds at least 3:1.</span></div>
+        <div class="ds-a11y-row"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span class="ds-a11y-row__text">Visible 2px blue focus ring with 2px offset on every interactive element.</span></div>
+        <div class="ds-a11y-row"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span class="ds-a11y-row__text">One H1 per page with an ordered H2/H3 hierarchy.</span></div>
+        <div class="ds-a11y-row"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span class="ds-a11y-row__text">Form fields use real labels, required indicators and inline error text.</span></div>
+        <div class="ds-a11y-row"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span class="ds-a11y-row__text">Status is never conveyed by colour alone — a label always accompanies the dot.</span></div>
+        <div class="ds-a11y-row"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span class="ds-a11y-row__text">Decorative SVG is aria-hidden; the logo mark carries an accessible name.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="k-footer">
+  <div class="k-footer__row">
+    <a class="k-header__logo" href="index.html">
+      <svg viewBox="0 0 128 104" width="30" height="24" aria-hidden="true">
+        <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"/>
+        <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"/>
+        <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"/>
+        <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"/>
+        <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"/>
+      </svg>
+      <span class="k-footer__brand-name">KESTARA</span>
+    </a>
+    <nav class="k-footer__row-nav" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://github.com/Inam337/kestara-wordpress-agent">GitHub</a>
+    </nav>
+  </div>
+  <div class="k-footer__bottom" style="justify-content:flex-start">
+    <span class="k-footer__copy">Copyright © Kestara. All Rights Reserved.</span>
+  </div>
+</footer>
+
+<script src="assets/scripts/vendor/bootstrap.bundle.min.js" defer></script>
+<script src="assets/scripts/loader.js" defer></script>
+</body>
+</html>

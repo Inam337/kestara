@@ -1,0 +1,100 @@
+/* Kestara design tokens — single source of truth, mirrors docs/.../README.md */
+:root {
+  /* Color */
+  --graphite: #111827;
+  --midnight: #080D16;
+  --kestrel-blue: #2563EB;
+  --deep-blue: #1E3A8A;
+  --sky-500: #3B82F6;
+  --sky-400: #60A5FA;
+  --sky-300: #93C5FD;
+  --sky-200: #DBEAFE;
+  --copper: #D97706;
+  --amber: #F59E0B;
+  --amber-300: #FBBF24;
+  --cloud: #F8FAFC;
+  --white: #FFFFFF;
+  --panel: #0B1220;
+  --panel-border: #1E293B;
+
+  --slate-800: #1E293B;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate: #64748B;
+  --slate-400: #94A3B8;
+  --slate-300: #CBD5E1;
+  --slate-200: #E2E8F0;
+  --slate-100: #F1F5F9;
+  --blue-tint: #EFF6FF;
+
+  --success: #16A34A;
+  --success-bg: #F0FDF4;
+  --success-border: #BBF7D0;
+  --error: #DC2626;
+  --error-bg: #FEF2F2;
+  --error-border: #FECACA;
+
+  /* AI-DLC stage colors */
+  --stage-discovery: #64748B;
+  --stage-requirements: #475569;
+  --stage-architecture: #2563EB;
+  --stage-design: #7C3AED;
+  --stage-development: #0F766E;
+  --stage-cms: #0891B2;
+  --stage-qa: #16A34A;
+  --stage-security: #B45309;
+  --stage-performance: #D97706;
+  --stage-deployment: #2563EB;
+  --stage-production: #111827;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(180deg, #080D16 0%, #111827 52%, #172554 100%);
+  --gradient-cta: linear-gradient(135deg, #080D16 0%, #111827 45%, #172554 100%);
+  --gradient-btn: linear-gradient(135deg, #60A5FA 0%, #2563EB 45%, #1E3A8A 100%);
+  --gradient-btn-hover: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 60%, #111827 100%);
+  --gradient-loader-bar: linear-gradient(90deg, #1E3A8A, #3B82F6 60%, #F59E0B);
+  --gradient-rail-fill: linear-gradient(90deg, #1E3A8A, #3B82F6 70%, #F59E0B);
+  --gradient-headline: linear-gradient(92deg, #DBEAFE 0%, #60A5FA 45%, #F59E0B 105%);
+
+  /* Spacing (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --section-pad-v: clamp(60px, 7vw, 104px);
+  --section-pad-h: 24px;
+  --container-max: 1280px;
+
+  /* Radius */
+  --radius-chip: 8px;
+  --radius-btn: 10px;
+  --radius-card: 14px;
+  --radius-panel: 20px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-sm: 0 2px 4px rgba(17, 24, 39, .06);
+  --shadow-md: 0 2px 12px rgba(17, 24, 39, .06);
+  --shadow-lg: 0 24px 60px rgba(8, 13, 22, .28);
+  --shadow-btn-glow: 0 8px 24px rgba(37, 99, 235, .28);
+
+  /* Motion */
+  --ease-hover: 160ms ease;
+  --ease-rail: 550ms cubic-bezier(.4, 0, .2, 1);
+  --ease-rise: 700ms ease;
+  --ease-draw: 800ms cubic-bezier(.4, 0, .2, 1);
+  --dur-pulse: 2.2s;
+  --dur-wing: 1.7s;
+  --dur-float: 3s;
+  --dur-spin-outer: 6s;
+  --dur-spin-inner: 9s;
+  --dur-spin-hero: 64s;
+  --dur-loader-bar: 1.8s;
+  --dur-page-transition: 720ms;
+
+  /* Fonts */
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}

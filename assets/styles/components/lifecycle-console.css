@@ -1,0 +1,193 @@
+.console {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-top: clamp(40px, 4vw, 56px);
+}
+.console::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(248, 250, 252, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(248, 250, 252, .035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 100%);
+  pointer-events: none;
+}
+.console::after {
+  content: "";
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
+  height: 320px;
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, .22), transparent 70%);
+  pointer-events: none;
+}
+.console__inner {
+  position: relative;
+  padding: clamp(28px, 3.4vw, 44px);
+}
+.console__top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(24px, 3vw, 48px);
+  min-height: 196px;
+}
+.console__detail { grid-column: span 2; }
+.console__kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: var(--amber);
+}
+.console__kicker-rule { width: 34px; height: 1px; background: rgba(245, 158, 11, .5); }
+.console__kicker-sub { color: var(--slate-600); }
+.console__name {
+  margin-top: 10px;
+  font-size: clamp(24px, 2.8vw, 36px);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--cloud);
+}
+.console__desc {
+  margin-top: 12px;
+  max-width: 640px;
+  font-size: 15.5px;
+  line-height: 1.68;
+  color: var(--slate-400);
+}
+.console__side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.console__mini {
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(248, 250, 252, .1);
+  background: rgba(248, 250, 252, .04);
+}
+.console__mini-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .18em;
+  color: var(--slate-600);
+}
+.console__mini-value {
+  margin-top: 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--cloud);
+}
+.console__mini-value--output { color: var(--sky-300); }
+
+.console__rail-wrap {
+  margin-top: clamp(28px, 3vw, 44px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+}
+.console__rail {
+  position: relative;
+  min-width: 1020px;
+  padding-top: 46px;
+}
+.console__marker {
+  position: absolute;
+  top: 0;
+  left: 4.1666%;
+  transform: translateX(-50%);
+  transition: left var(--ease-rail);
+  filter: drop-shadow(0 6px 16px rgba(37, 99, 235, .5));
+  width: 38px;
+}
+.console__track {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--panel-border);
+}
+.console__track-fill {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  height: 2px;
+  width: 8.3333%;
+  background: var(--gradient-rail-fill);
+  transition: width var(--ease-rail);
+}
+.console__stages {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.console__stage {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  background: none;
+  border: 0;
+  padding: 0 6px;
+  cursor: pointer;
+  text-align: center;
+  font-family: inherit;
+}
+.console__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: block;
+  background: var(--panel);
+  border: 2px solid var(--slate-800);
+  transition: all .35s ease;
+}
+.console__stage[data-state="completed"] .console__dot {
+  background: var(--deep-blue);
+  border-color: var(--sky-500);
+}
+.console__stage[data-state="active"] .console__dot {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 6px rgba(245, 158, 11, .16);
+}
+.console__num {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  font-family: var(--font-mono);
+  color: var(--slate-600);
+}
+.console__stage[data-state="active"] .console__num { color: var(--amber); }
+.console__label {
+  margin-top: 6px;
+  width: 100%;
+  overflow-wrap: break-word;
+  font-size: 11.5px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--slate);
+  transition: color .35s ease;
+}
+.console__stage[data-state="active"] .console__label { font-weight: 600; color: var(--cloud); }
+
+.console__caption {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--slate-600);
+  font-family: var(--font-mono);
+}

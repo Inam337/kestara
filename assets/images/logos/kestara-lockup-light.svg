@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 60" width="420" height="60" role="img" aria-label="Kestara">
+  <title>Kestara — horizontal lockup (for light backgrounds)</title>
+  <g transform="translate(0,8) scale(0.42)">
+    <path d="M6 6 L70 46 L46 50 Z" fill="#CBD5E1"></path>
+    <path d="M18 34 L74 54 L44 60 Z" fill="#94A3B8"></path>
+    <path d="M24 52 L54 60 L36 66 Z" fill="#2563EB"></path>
+    <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#111827"></path>
+    <path d="M58 62 L92 60 L34 98 Z" fill="#64748B"></path>
+  </g>
+  <text x="70" y="38" font-family="Montserrat, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="5.8" fill="#111827">KESTARA</text>
+</svg>

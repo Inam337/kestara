@@ -1,0 +1,19 @@
+.contact-hero { position: relative; overflow: hidden; background: linear-gradient(180deg, #080D16 0%, #111827 100%); }
+.contact-hero__network { position: absolute; right: 0; bottom: 0; width: min(46%, 520px); opacity: .5; pointer-events: none; }
+.contact-hero__inner { position: relative; max-width: var(--container-max); margin: 0 auto; padding: clamp(56px, 6.5vw, 92px) 24px; }
+.contact-hero__eyebrow { color: var(--amber); }
+.contact-hero__title { margin-top: 18px; max-width: 760px; color: var(--cloud); }
+.contact-hero__desc { margin-top: 20px; max-width: 560px; color: var(--slate-400); }
+
+.channel-card { padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 10px; }
+.channel-card__name { margin-top: 8px; font-size: 16.5px; font-weight: 600; color: var(--graphite); }
+.channel-card__desc { font-size: 13.5px; line-height: 1.6; color: var(--slate); }
+.channel-card__token { margin-top: auto; padding-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--slate-400); }
+
+.contact-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(36px, 4vw, 64px); align-items: start; }
+.contact-callout { margin-top: 32px; padding: 22px 24px; border-radius: 12px; border: 1px solid var(--slate-200); background: var(--cloud); }
+.contact-callout h3 { font-size: 15px; font-weight: 600; color: var(--graphite); }
+.contact-callout p { margin-top: 8px; font-size: 13.5px; line-height: 1.6; color: var(--slate); }
+.contact-callout .btn-k { margin-top: 16px; }
+
+.contact-form-card { display: flex; flex-direction: column; gap: 18px; padding: clamp(24px, 3vw, 36px); border-radius: 16px; border: 1px solid var(--slate-200); background: var(--white); box-shadow: var(--shadow-md); }

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Kestara app icon">
+  <title>Kestara — app icon</title>
+  <rect width="512" height="512" rx="112" fill="#111827"></rect>
+  <g transform="translate(112,152) scale(2.25)">
+    <path d="M6 6 L70 46 L46 50 Z" fill="#1E3A8A"></path>
+    <path d="M18 34 L74 54 L44 60 Z" fill="#3B82F6"></path>
+    <path d="M24 52 L54 60 L36 66 Z" fill="#F59E0B"></path>
+    <path d="M44 48 L122 42 L92 60 L60 64 Z" fill="#F8FAFC"></path>
+    <path d="M58 62 L92 60 L34 98 Z" fill="#2563EB"></path>
+  </g>
+</svg>
