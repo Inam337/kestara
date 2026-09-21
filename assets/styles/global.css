@@ -10,6 +10,7 @@
   --sky-300: #93C5FD;
   --sky-200: #DBEAFE;
   --copper: #D97706;
+  --copper-700: #B45309; /* AA-contrast copper for text on light backgrounds */
   --amber: #F59E0B;
   --amber-300: #FBBF24;
   --cloud: #F8FAFC;
@@ -1205,7 +1206,7 @@ textarea.field__control {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .12em;
-  color: var(--copper);
+  color: var(--copper-700);
 }
 .section-heading__num--dark { color: var(--amber); }
 .section-heading__tick {
@@ -1217,7 +1218,7 @@ textarea.field__control {
 }
 .section-heading__tick--dark { background: linear-gradient(var(--amber), rgba(245, 158, 11, 0)); }
 .section-heading__body { min-width: 0; }
-.section-heading__eyebrow { color: var(--copper); }
+.section-heading__eyebrow { color: var(--copper-700); }
 .section-heading__eyebrow--dark { color: var(--amber); }
 .section-heading__h2 {
   margin-top: 14px;

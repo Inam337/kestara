@@ -46,7 +46,7 @@
 .ds-section { padding: clamp(48px, 5vw, 76px) 24px; border-bottom: 1px solid var(--slate-200); }
 .ds-section:last-of-type { border-bottom: 0; }
 .ds-section__inner { max-width: var(--container-max); margin: 0 auto; }
-.ds-eyebrow { color: var(--copper); }
+.ds-eyebrow { color: var(--copper-700); }
 .ds-h2 {
   margin-top: 14px;
   font-size: clamp(24px, 2.6vw, 32px);
