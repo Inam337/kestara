@@ -11,9 +11,20 @@
 .channel-card__token { margin-top: auto; padding-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--slate-400); }
 
 .contact-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(36px, 4vw, 64px); align-items: start; }
+/* Below 900px the two-up split leaves the form card too narrow for its own
+   internal 2-column field rows (email/name inputs get squeezed); stack instead */
+@media (max-width: 900px) {
+  .contact-form-grid { grid-template-columns: 1fr; }
+}
 .contact-callout { margin-top: 32px; padding: 22px 24px; border-radius: 12px; border: 1px solid var(--slate-200); background: var(--cloud); }
 .contact-callout h3 { font-size: 15px; font-weight: 600; color: var(--graphite); }
 .contact-callout p { margin-top: 8px; font-size: 13.5px; line-height: 1.6; color: var(--slate); }
 .contact-callout .btn-k { margin-top: 16px; }
 
 .contact-form-card { display: flex; flex-direction: column; gap: 18px; padding: clamp(24px, 3vw, 36px); border-radius: 16px; border: 1px solid var(--slate-200); background: var(--white); box-shadow: var(--shadow-md); }
+
+@media (max-width: 640px) {
+  /* iOS Safari auto-zooms on focus when an input's font-size is under 16px */
+  .contact-form-card .field__control { font-size: 16px; }
+  .contact-form-card button[type="submit"] { width: 100%; }
+}

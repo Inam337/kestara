@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kestara — AI Software Engineering Platform | Build with Precision</title>
 <meta name="description" content="Kestara orchestrates the software development lifecycle with AI — from requirements and design to development, testing, deployment and production.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B1220">
 <link rel="canonical" href="index.html">
 <meta property="og:title" content="Kestara — Build with Precision. Move with Speed.">
 <meta property="og:description" content="An AI-orchestrated development lifecycle: AI-DLC, from idea to production.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Kestara">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kestara — Build with Precision. Move with Speed.">
+<meta name="twitter:description" content="An AI-orchestrated development lifecycle: AI-DLC, from idea to production.">
 <link rel="icon" type="image/svg+xml" href="assets/images/logos/kestara-favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-700.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-400.woff2" crossorigin>
-<link rel="stylesheet" href="assets/styles/vendor/bootstrap.min.css">
 <link rel="stylesheet" href="assets/styles/global.css">
 <link rel="stylesheet" href="assets/styles/pages/home.css">
 <script type="application/ld+json">
@@ -72,10 +77,15 @@
       </svg>
       <span class="k-header__logo-text">KESTARA</span>
     </a>
-    <button class="navbar-toggler k-header__toggler" type="button" data-bs-toggle="collapse" data-bs-target="#kNavCollapse" aria-controls="kNavCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="k-header__toggler" type="button" id="kNavToggle" aria-controls="kNavCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="k-header__toggler-box">
+        <span class="k-header__toggler-line"></span>
+        <span class="k-header__toggler-line"></span>
+        <span class="k-header__toggler-line"></span>
+      </span>
     </button>
-    <nav id="kNavCollapse" class="k-header__nav collapse" aria-label="Primary">
+    <div class="k-nav-backdrop" id="kNavBackdrop"></div>
+    <nav id="kNavCollapse" class="k-header__nav" aria-label="Primary" aria-hidden="true">
       <a class="k-header__link" href="#platform">Platform</a>
       <a class="k-header__link" href="#aidlc">AI-DLC</a>
       <a class="k-header__link" href="#why">Why Kestara</a>
@@ -471,7 +481,7 @@
   </div>
 </footer>
 
-<script src="assets/scripts/vendor/bootstrap.bundle.min.js" defer></script>
+<script src="assets/scripts/nav-menu.js" defer></script>
 <script src="assets/scripts/loader.js" defer></script>
 <script src="assets/scripts/lifecycle-console.js" defer></script>
 </body>

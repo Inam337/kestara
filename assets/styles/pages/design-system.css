@@ -133,6 +133,19 @@
 }
 .ds-caption { margin-top: 12px; font-size: 13px; color: var(--slate); }
 
+/* Below ~560px a proportional bar can't fit small-percentage labels (e.g. 5%)
+   legibly — fall back to a stacked list so every segment stays readable. */
+@media (max-width: 560px) {
+  .ds-usage-bar { flex-direction: column; height: auto; }
+  .ds-usage-bar__seg {
+    justify-content: flex-start;
+    height: 40px;
+    padding: 0 16px;
+    flex: none !important;
+    width: 100%;
+  }
+}
+
 .ds-stage-row { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
 .ds-stage-pill {
   display: inline-flex;
@@ -225,6 +238,13 @@
 .ds-motion-row:first-of-type { margin-top: 20px; }
 .ds-motion-row__token { width: 120px; flex: none; font-family: var(--font-mono); font-size: 11.5px; color: var(--slate-400); }
 .ds-motion-row__desc { font-size: 14px; line-height: 1.6; color: var(--slate-700); }
+
+/* A fixed 120px token label leaves too little room for the description
+   to read comfortably on phones — stack them instead. */
+@media (max-width: 480px) {
+  .ds-motion-row { flex-direction: column; gap: 4px; }
+  .ds-motion-row__token { width: auto; }
+}
 .ds-a11y-row { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; }
 .ds-a11y-row:first-of-type { margin-top: 20px; }
 .ds-a11y-row svg { flex: none; margin-top: 4px; width: 20px; height: 20px; stroke: var(--success); stroke-width: 2; fill: none; stroke-linecap: round; }

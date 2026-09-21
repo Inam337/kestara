@@ -42,3 +42,23 @@
 .journey-row__num { flex: none; width: 44px; font-size: 13px; font-weight: 600; font-family: var(--font-mono); padding-top: 2px; }
 .journey-row__name { flex: none; width: clamp(120px, 16vw, 200px); font-size: 16px; font-weight: 600; color: var(--graphite); line-height: 1.35; }
 .journey-row__desc { min-width: 0; flex: 1; font-size: 14.5px; line-height: 1.65; color: var(--slate); }
+
+@media (max-width: 700px) {
+  .journey-row {
+    flex-wrap: wrap;
+    padding: 20px clamp(18px, 5vw, 28px);
+  }
+  .journey-row__num { width: auto; padding-top: 0; }
+  .journey-row__name {
+    width: auto;
+    flex: 1 1 auto;
+  }
+  .journey-row__desc {
+    flex-basis: 100%;
+    margin-top: 8px;
+    padding-left: calc(44px + clamp(16px, 3vw, 40px));
+  }
+}
+@media (max-width: 420px) {
+  .journey-row__desc { padding-left: 0; }
+}
