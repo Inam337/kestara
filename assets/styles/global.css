@@ -444,14 +444,17 @@ input::placeholder, textarea::placeholder { color: var(--slate-400); }
   .k-loader { display: none; }
 }
 .k-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 20;
   background: rgba(11, 18, 32, .92);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(248, 250, 252, .08);
 }
+main { padding-top: 72px; }
 .k-header__bar {
   max-width: var(--container-max);
   margin: 0 auto;
