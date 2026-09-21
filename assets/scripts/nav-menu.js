@@ -23,12 +23,19 @@
       return nav.querySelectorAll("a, button");
     }
 
+    // On desktop the nav is always visible inline, so it must never be inert.
+    // On mobile it's an off-canvas drawer, so it's inert (hidden from AT and
+    // unreachable by keyboard) whenever it isn't the open state.
+    function syncInert() {
+      nav.inert = !mq.matches && !isOpen();
+    }
+
     function open() {
       scrollY = window.scrollY || window.pageYOffset || 0;
       document.body.classList.add("nav-open");
       document.body.style.top = (-scrollY) + "px";
       toggle.setAttribute("aria-expanded", "true");
-      nav.setAttribute("aria-hidden", "false");
+      nav.inert = false;
       var items = focusableItems();
       if (items.length) items[0].focus({ preventScroll: true });
       document.addEventListener("keydown", onKeydown);
@@ -39,7 +46,7 @@
       document.body.style.top = "";
       window.scrollTo(0, scrollY);
       toggle.setAttribute("aria-expanded", "false");
-      nav.setAttribute("aria-hidden", "true");
+      syncInert();
       document.removeEventListener("keydown", onKeydown);
       if (returnFocus) toggle.focus({ preventScroll: true });
     }
@@ -82,7 +89,9 @@
     });
 
     mq.addEventListener
-      ? mq.addEventListener("change", function (ev) { if (ev.matches) close(false); })
-      : mq.addListener(function (ev) { if (ev.matches) close(false); });
+      ? mq.addEventListener("change", function (ev) { if (ev.matches) close(false); else syncInert(); })
+      : mq.addListener(function (ev) { if (ev.matches) close(false); else syncInert(); });
+
+    syncInert();
   });
 })();
