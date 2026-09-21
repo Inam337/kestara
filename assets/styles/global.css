@@ -179,6 +179,7 @@ input::placeholder, textarea::placeholder { color: var(--slate-400); }
 
 /* Attribute-driven responsive grids used throughout the site */
 [data-grid] { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+[data-grid="5"] { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 [data-grid="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 [data-grid="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 1000px) {
@@ -307,6 +308,13 @@ input::placeholder, textarea::placeholder { color: var(--slate-400); }
 .bg-hero { background: var(--gradient-hero); }
 .bg-cta { background: var(--gradient-cta); }
 .bg-midnight-fade { background: linear-gradient(180deg, var(--midnight), var(--graphite)); }
+
+/* Final CTA — shared across home, about and contact */
+.final-cta { position: relative; overflow: hidden; background: var(--gradient-cta); text-align: center; }
+.final-cta__inner { position: relative; max-width: 820px; margin: 0 auto; padding: clamp(72px, 8vw, 120px) 24px; }
+.final-cta h2 { color: var(--cloud); }
+.final-cta p { margin: 20px auto 0; max-width: 560px; font-size: 17px; line-height: 1.7; color: var(--slate-400); }
+.final-cta__actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 36px; }
 
 .gradient-headline {
   background: var(--gradient-headline);
@@ -707,7 +715,7 @@ input::placeholder, textarea::placeholder { color: var(--slate-400); }
   color: var(--cloud);
   border-color: var(--graphite);
 }
-.btn-k-dark:hover { background: var(--midnight); }
+.btn-k-dark:hover { background: var(--midnight); color: var(--white); }
 
 .btn-k-outline-light {
   background: none;
@@ -768,6 +776,18 @@ input::placeholder, textarea::placeholder { color: var(--slate-400); }
   border-color: rgba(248, 250, 252, .1);
 }
 .icon-chip--dark svg { stroke: var(--slate-300); width: 17px; height: 17px; }
+
+.claude-kicker { display: flex; align-items: center; gap: 12px; }
+.claude-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #D97757;
+  flex: none;
+}
 .badge-k {
   display: inline-flex;
   align-items: center;

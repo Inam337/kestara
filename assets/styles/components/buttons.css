@@ -75,7 +75,7 @@
   color: var(--cloud);
   border-color: var(--graphite);
 }
-.btn-k-dark:hover { background: var(--midnight); }
+.btn-k-dark:hover { background: var(--midnight); color: var(--white); }
 
 .btn-k-outline-light {
   background: none;
