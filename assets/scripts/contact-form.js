@@ -1,7 +1,7 @@
 /**
- * Contact page form: client-side-only validation state machine.
- * validate-on-blur (per field), clear-on-change, validate-all-on-submit, success + reset.
- * No backend endpoint is wired — see docs/.../README.md "Open Decisions for the Developer".
+ * Contact page form: validate-on-blur (per field), clear-on-change,
+ * validate-all-on-submit, then POST to /api/contact (Gmail API) and show
+ * success/error state based on the response.
  */
 (function () {
   "use strict";
@@ -88,6 +88,20 @@
       return errors;
     }
 
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var submitBtnDefaultHtml = submitBtn ? submitBtn.innerHTML : "";
+
+    function setSending(isSending) {
+      if (!submitBtn) return;
+      submitBtn.disabled = isSending;
+      submitBtn.innerHTML = isSending ? "Sending…" : submitBtnDefaultHtml;
+    }
+
+    function showAlert(text) {
+      alertBox.textContent = text || "Please correct the highlighted fields before sending.";
+      alertBox.hidden = false;
+    }
+
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
       var errors = validateAll();
@@ -98,16 +112,50 @@
         .forEach(function (name) { setFieldError(name, ""); });
 
       if (names.length) {
-        alertBox.hidden = false;
+        showAlert();
         var firstInvalid = fields[names[0]];
         if (firstInvalid) firstInvalid.focus();
         return;
       }
 
       alertBox.hidden = true;
-      form.hidden = true;
-      successPanel.hidden = false;
-      successPanel.focus();
+      setSending(true);
+
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: fields.fullName.value,
+          email: fields.email.value,
+          company: fields.company.value,
+          subject: fields.subject.value,
+          message: fields.message.value
+        })
+      })
+        .then(function (res) {
+          return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+        })
+        .then(function (result) {
+          setSending(false);
+
+          if (result.ok && result.data && result.data.ok) {
+            form.hidden = true;
+            successPanel.hidden = false;
+            successPanel.focus();
+            return;
+          }
+
+          if (result.data && result.data.errors) {
+            Object.keys(result.data.errors).forEach(function (name) {
+              setFieldError(name, result.data.errors[name]);
+            });
+          }
+          showAlert("We couldn't send your message. Please check the fields and try again.");
+        })
+        .catch(function () {
+          setSending(false);
+          showAlert("We couldn't reach the server. Please try again in a moment.");
+        });
     });
 
     var resetBtn = document.querySelector("[data-contact-reset]");

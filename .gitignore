@@ -1,2 +1,6 @@
 docs/Kestrel brand color system (1).zip
 docs/Kestrel brand color system (1)/
+
+node_modules/
+.env
+.vercel

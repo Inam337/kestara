@@ -1,0 +1,15 @@
+{
+  "name": "kestara-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kestara marketing site, including the Gmail API contact-form endpoint.",
+  "scripts": {
+    "get-gmail-refresh-token": "node scripts/get-gmail-refresh-token.js"
+  },
+  "dependencies": {
+    "googleapis": "^181.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
