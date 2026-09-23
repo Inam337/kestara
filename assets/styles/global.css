@@ -204,6 +204,9 @@ input::placeholder, textarea::placeholder { color: var(--slate-400); }
   margin: 0 auto;
   padding: 0 var(--section-pad-h);
 }
+@media (max-width: 767px) {
+  .container-kestara { padding: 0; }
+}
 
 .bg-white { background: var(--white); }
 .bg-cloud { background: var(--cloud); }
@@ -767,6 +770,21 @@ main { padding-top: 72px; }
 
 .btn-k--sm { height: 44px; padding: 0 18px; font-size: 14px; }
 .btn-k--lg { height: 52px; padding: 0 28px; font-size: 15px; }
+
+/* Short labels: buttons carry a full and a short label; mobile shows the short one
+   so every button group fits on a single row. */
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn-k__short { display: none; }
+@media (max-width: 767px) {
+  .btn-k__full { display: none; }
+  .btn-k__short { display: inline; }
+  .hero__actions,
+  .final-cta__actions,
+  .btn-row { flex-wrap: nowrap; gap: 10px; }
+  .hero__actions .btn-k,
+  .final-cta__actions .btn-k,
+  .btn-row .btn-k { flex: 1 1 0; min-width: 0; height: 46px; padding: 0 12px; font-size: 13.5px; }
+}
 
 /* Primary — blue gradient */
 .btn-k-primary {

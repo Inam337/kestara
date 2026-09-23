@@ -47,6 +47,7 @@
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     var stages = Array.prototype.slice.call(console_.querySelectorAll(".console__stage"));
+    var railWrap = console_.querySelector(".console__rail-wrap");
     var marker = console_.querySelector(".console__marker");
     var trackFill = console_.querySelector(".console__track-fill");
     var kickerNum = console_.querySelector("[data-kicker-num]");
@@ -60,6 +61,15 @@
 
     var state = { active: 0, auto: true };
     var timer = null;
+
+    // Keep the active stage centred in the horizontally scrollable rail (mobile layouts).
+    // Scrolls only the rail container, never the page.
+    function followActive() {
+      if (!railWrap || railWrap.scrollWidth <= railWrap.clientWidth) return;
+      var btn = stages[state.active];
+      var target = btn.offsetLeft + btn.offsetWidth / 2 - railWrap.clientWidth / 2;
+      railWrap.scrollTo({ left: Math.max(0, target), behavior: reduceMotion ? "auto" : "smooth" });
+    }
 
     function render() {
       var phase = PHASES[state.active];
@@ -76,6 +86,8 @@
 
       if (tickerNum) tickerNum.textContent = phase.num;
       if (tickerName) tickerName.textContent = phase.name;
+
+      followActive();
 
       stages.forEach(function (btn, i) {
         var stateAttr = i < state.active ? "completed" : (i === state.active ? "active" : "future");

@@ -142,19 +142,48 @@
 
 <section class="section" style="background:#fff">
   <div class="container-kestara contact-form-grid">
-    <div>
-      <span class="eyebrow" style="color:var(--copper)">SEND A MESSAGE</span>
-      <h2 style="margin-top:16px;font-size:clamp(26px,3vw,36px);line-height:1.16;font-weight:700;letter-spacing:-.02em;color:var(--graphite)">Tell us what you are building.</h2>
-      <p style="margin-top:18px;max-width:420px;font-size:15.5px;line-height:1.7;color:var(--slate)">Fields marked with an asterisk are required. We reply to the email address you provide.</p>
+    <aside class="contact-brief">
+      <div class="bg-grid" aria-hidden="true"></div>
+      <div class="contact-brief__glow" aria-hidden="true"></div>
+      <div class="contact-brief__inner">
+        <span class="eyebrow contact-brief__eyebrow">SEND A MESSAGE</span>
+        <h2 class="contact-brief__title">Tell us what you are <span class="gradient-headline">building.</span></h2>
+        <p class="contact-brief__desc">Fields marked with an asterisk are required. We reply to the email address you provide.</p>
+
+        <ol class="contact-steps">
+          <li class="contact-steps__item">
+            <span class="contact-steps__num">01</span>
+            <div>
+              <div class="contact-steps__name">You describe the project</div>
+              <div class="contact-steps__desc">The platform, the goal and the outcome you need.</div>
+            </div>
+          </li>
+          <li class="contact-steps__item">
+            <span class="contact-steps__num">02</span>
+            <div>
+              <div class="contact-steps__name">The team reviews it</div>
+              <div class="contact-steps__desc">Your subject routes the message to the right people.</div>
+            </div>
+          </li>
+          <li class="contact-steps__item">
+            <span class="contact-steps__num contact-steps__num--end">03</span>
+            <div>
+              <div class="contact-steps__name">We reply by email</div>
+              <div class="contact-steps__desc">Directly to the address you provide.</div>
+            </div>
+          </li>
+        </ol>
+      </div>
+
       <div class="contact-callout">
         <h3>Found a bug or have an idea?</h3>
         <p>Join the development conversation through the Kestara GitHub repository.</p>
-        <a class="btn-k btn-k-dark btn-k--sm" href="contact.html">
+        <a class="btn-k btn-k-outline-dark btn-k--sm" href="contact.html">
           <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
           Open Kestara on GitHub
         </a>
       </div>
-    </div>
+    </aside>
 
     <div>
       <div role="status" class="form-success" data-contact-success hidden tabindex="-1">
@@ -165,6 +194,14 @@
       </div>
 
       <form class="contact-form-card" data-contact-form novalidate>
+        <div class="contact-form-card__bar" aria-hidden="true">
+          <span class="contact-form-card__dots"><i></i><i></i><i></i></span>
+          <span class="contact-form-card__path">kestara://new-message</span>
+          <span class="contact-form-card__count"><span data-form-progress-count>0</span>/4 required</span>
+        </div>
+        <div class="contact-form-card__track" aria-hidden="true"><span class="contact-form-card__fill" data-form-progress></span></div>
+
+        <div class="contact-form-card__body">
         <div role="alert" class="form-alert" data-form-alert hidden>Please correct the highlighted fields before sending.</div>
 
         <div data-form-row>
@@ -200,17 +237,43 @@
         </div>
 
         <div class="field">
+          <label class="field__label" for="k-plan">Plan of Interest</label>
+          <select class="field__control" id="k-plan" name="plan" aria-describedby="k-plan-summary">
+            <option value="">Select a plan (optional)</option>
+            <option value="free">Free — $0 · public repo</option>
+            <option value="starter">Starter — $19/mo · Pro Pack</option>
+            <option value="pro">Professional — $49/mo · Pro Pack + Templates</option>
+            <option value="business">Business — $149/mo · all repos, 5 seats</option>
+            <option value="enterprise">Enterprise — Custom</option>
+          </select>
+          <span class="field__hint" id="k-plan-summary" data-plan-summary hidden></span>
+        </div>
+
+        <div class="field" data-github-field hidden>
+          <label class="field__label" for="k-github">GitHub Username</label>
+          <input class="field__control" id="k-github" name="githubUsername" type="text" placeholder="@your-username" autocomplete="username" autocapitalize="off" spellcheck="false" aria-invalid="false" aria-describedby="k-github-hint k-github-error">
+          <span class="field__hint" id="k-github-hint">Private repositories are shared by GitHub invite once your plan is confirmed.</span>
+          <span class="field__error" id="k-github-error" data-error-for="githubUsername" hidden></span>
+        </div>
+
+        <div class="field--trap" aria-hidden="true">
+          <label for="k-website">Website</label>
+          <input id="k-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field">
           <label class="field__label" for="k-message">Message <span class="field__required">*</span></label>
           <textarea class="field__control" id="k-message" name="message" rows="6" placeholder="Tell us about the project, the platform and the outcome you need." aria-required="true" aria-invalid="false" aria-describedby="k-message-error"></textarea>
           <span class="field__error" id="k-message-error" data-error-for="message" hidden></span>
         </div>
 
-        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:6px">
+        <div class="contact-form-card__submit">
           <button type="submit" class="btn-k btn-k-primary">
             Send Message
             <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg>
           </button>
           <span class="field__hint">Required fields are marked <span class="field__required">*</span></span>
+        </div>
         </div>
       </form>
     </div>
@@ -223,8 +286,8 @@
     <h2 class="text-h2" style="font-size:clamp(26px,3.4vw,42px)">Ready to Build with Precision?</h2>
     <p>Bring a structured AI development lifecycle to your next project.</p>
     <div class="final-cta__actions">
-      <a class="btn-k btn-k-primary btn-k--lg" href="index.html#aidlc">Explore AI-DLC</a>
-      <a class="btn-k btn-k-outline-dark btn-k--lg" href="contact.html">View on GitHub</a>
+      <a class="btn-k btn-k-primary btn-k--lg" href="index.html#aidlc"><span class="btn-k__full">Explore AI-DLC</span><span class="btn-k__short">AI-DLC</span></a>
+      <a class="btn-k btn-k-outline-dark btn-k--lg" href="contact.html"><span class="btn-k__full">View on GitHub</span><span class="btn-k__short">GitHub</span></a>
     </div>
   </div>
 </section>

@@ -26,6 +26,7 @@
 .hero__h1 .text-display { display: block; }
 .hero__body { margin-top: 24px; max-width: 620px; color: var(--slate-400); animation: kRise .7s ease .16s both; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 38px; animation: kRise .7s ease .24s both; }
+@media (max-width: 767px) { .hero__actions { flex-wrap: nowrap; } }
 .hero__ticker {
   margin-top: 40px;
   display: flex;
@@ -144,6 +145,7 @@
 
 .claude-cli { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px rgba(8, 13, 22, .18); }
 .claude-cli__bar { display: flex; align-items: center; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--panel-border); }
+@media (max-width: 767px) { .claude-cli__bar { padding: 14px 12px; gap: 4px; } }
 .claude-cli__mark-icon { margin-left: 10px; flex: none; }
 .claude-cli__title { font-family: var(--font-mono); font-size: 11.5px; color: var(--slate-400); }
 .claude-cli__phase { margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--amber); }
